@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='dist/css/output.css') }}"
+    />
+    <link
+      rel="shortcut icon"
+      href="{{ url_for('static', filename='favicon.png') }}"
+      type="image/x-icon"
+    />
+    <title>FarmGenie - Cultivating Success</title>
+  </head>
+
+  <body class="bg-gray-50">
+    <header class="text-gray-600 body-font">
+      <div
+        class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center"
+      >
+        <a
+          class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            class="w-10 h-10 text-white p-2 bg-yellow-500 rounded-full"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"
+            ></path>
+          </svg>
+          <a href="/" class="font-semibold"
+            ><span class="ml-3 text-xl"
+              >FarmGenie - Cultivating Success</span
+            ></a
+          >
+        </a>
+        <nav
+          class="md:ml-auto flex flex-wrap items-center text-base justify-center"
+        >
+          <a
+            href="/crop-recommendation-system"
+            class="mr-5 hover:text-gray-900 hover:cursor-pointer hover:font-semibold"
+            >Crop Recommendation System</a
+          >
+          <a
+            href="/crop-disease-prediction-system"
+            class="mr-5 hover:text-gray-900 hover:cursor-pointer hover:font-semibold"
+            >Disease Prediction System</a
+          >
+        </nav>
+      </div>
+    </header>
+
+    <form
+      method="POST"
+      action="/crop-disease-prediction-system"
+      class="text-gray-600 body-font relative"
+      enctype="multipart/form-data"
+    >
+      <div class="container px-5 py-8 mx-auto">
+        <div class="flex flex-col text-center w-full mb-12">
+          <h1
+            class="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900"
+          >
+            Crop Disease Prediction System
+          </h1>
+          <p class="lg:w-2/3 mx-auto leading-relaxed text-base">
+            Advanced solution for accurate and timely prediction of crop
+            diseases.
+          </p>
+        </div>
+        <div class="lg:w-1/2 md:w-2/3 mx-auto">
+          <div class="flex flex-wrap -m-2">
+            <div class="p-2 w-full">
+              <div class="relative">
+                <label for="image" class="leading-7 text-sm text-gray-600"
+                  >Disease Image (JPG/JPEG)</label
+                >
+                <input
+                  type="file"
+                  id="image"
+                  name="image"
+                  class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-yellow-500 focus:bg-white focus:ring-2 focus:ring-yellow-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+                />
+              </div>
+            </div>
+
+            <div class="p-2 w-full">
+              <button
+                type="submit"
+                class="flex mx-auto text-white bg-yellow-500 border-0 py-2 px-8 focus:outline-none hover:bg-yellow-600 rounded text-lg"
+              >
+                Submit
+              </button>
+            </div>
+            <div
+              class="p-2 w-full pt-8 mt-8 border-t border-gray-200 text-center"
+            >
+              <a class="text-yellow-500">Crop Disease Prediction System</a>
+              <p class="font-semibold leading-normal my-5">
+                FarmGenie <br />
+                Cultivating Success
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+
+    <hr />
+
+    {% if details|length != 0 %}
+    <section class="text-gray-600 body-font overflow-hidden">
+      <div class="container px-5 py-24 mx-auto">
+        <div class="lg:w-4/5 mx-auto flex flex-wrap">
+          <div class="lg:w-1/2 w-full lg:pr-10 lg:py-6 mb-6 lg:mb-0">
+            <h2 class="text-sm title-font text-gray-500 tracking-widest">
+              FARMGENIE
+            </h2>
+            <h1 class="text-gray-900 text-3xl title-font font-medium mb-4">
+              Crop Disease Prediction System
+            </h1>
+            <div class="flex mb-4">
+              <a
+                class="flex-grow text-yellow-500 border-b-2 border-yellow-500 py-2 text-lg px-1"
+                >Predictions</a
+              >
+            </div>
+            <p class="leading-relaxed mb-4">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi nostrum placeat id culpa sequi tempore ullam! Obcaecati odit architecto maxime quisquam nostrum sunt repudiandae laboriosam voluptates consequuntur ipsa tempore aut deserunt enim, quia delectus commodi? Officiis laborum rerum veritatis ab aperiam quos numquam impedit excepturi, repellendus beatae ullam asperiores quia!
+            </p>
+            <div class="flex border-t border-gray-200 py-2">
+              <span class="text-gray-500 font-semibold">Crop</span>
+              <span class="ml-auto text-gray-900">{{ details[0] }}</span>
+            </div>
+            <div class="flex border-t border-b border-gray-200 py-2">
+              <span class="text-gray-500 font-semibold">Disease</span>
+              <span class="ml-auto text-gray-900">{{ details[1] }}</span>
+            </div>
+          </div>
+          <img
+            alt="ecommerce"
+            class="lg:w-1/2 w-full lg:h-auto h-48 object-cover object-center rounded"
+            src="data:image/png;base64,{{ details[2] }}"
+          />
+        </div>
+      </div>
+    </section>
+    {% endif %}
+  </body>
+</html>

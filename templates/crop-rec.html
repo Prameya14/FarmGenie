@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='dist/css/output.css') }}"
+    />
+    <link
+      rel="shortcut icon"
+      href="{{url_for('static', filename='favicon.png')}}"
+      type="image/x-icon"
+    />
+    <title>FarmGenie - Cultivating Success</title>
+  </head>
+
+  <body class="bg-gray-50">
+    <header class="text-gray-600 body-font">
+      <div
+        class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center"
+      >
+        <a
+          class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            class="w-10 h-10 text-white p-2 bg-yellow-500 rounded-full"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"
+            ></path>
+          </svg>
+          <a href="/" class="font-semibold"
+            ><span class="ml-3 text-xl"
+              >FarmGenie - Cultivating Success</span
+            ></a
+          >
+        </a>
+        <nav
+          class="md:ml-auto flex flex-wrap items-center text-base justify-center"
+        >
+          <a href="/crop-recommendation-system"
+            class="mr-5 hover:text-gray-900 hover:cursor-pointer hover:font-semibold"
+            >Crop Recommendation System</a
+          >
+          <a href="/crop-disease-prediction-system"
+            class="mr-5 hover:text-gray-900 hover:cursor-pointer hover:font-semibold"
+            >Disease Prediction System</a
+          >
+        </nav>
+      </div>
+    </header>
+
+    <form
+      method="POST"
+      action="/crop-recommendation-system"
+      class="text-gray-600 body-font relative"
+    >
+      <div class="container px-5 py-8 mx-auto">
+        <div class="flex flex-col text-center w-full mb-12">
+          <h1
+            class="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900"
+          >
+            Crop Recommendation System
+          </h1>
+          <p class="lg:w-2/3 mx-auto leading-relaxed text-base">
+            AI-based platform for optimized crop selection and cultivation
+            practices.
+          </p>
+        </div>
+        <div class="lg:w-1/2 md:w-2/3 mx-auto">
+          <div class="flex flex-wrap -m-2">
+            <div class="p-2 w-1/2">
+              <div class="relative">
+                <label for="nRatio" class="leading-7 text-sm text-gray-600"
+                  >Nitrogen Ratio (kg/ha)</label
+                >
+                <input
+                  type="number"
+                  id="nRatio"
+                  name="nRatio"
+                  class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-yellow-500 focus:bg-white focus:ring-2 focus:ring-yellow-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+                />
+              </div>
+            </div>
+            <div class="p-2 w-1/2">
+              <div class="relative">
+                <label for="pRatio" class="leading-7 text-sm text-gray-600"
+                  >Phosphorous Ratio (kg/ha)</label
+                >
+                <input
+                  type="number"
+                  id="pRatio"
+                  name="pRatio"
+                  class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-yellow-500 focus:bg-white focus:ring-2 focus:ring-yellow-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+                />
+              </div>
+            </div>
+            <div class="p-2 w-1/2">
+              <div class="relative">
+                <label for="kRatio" class="leading-7 text-sm text-gray-600"
+                  >Potassium Ratio (kg/ha)</label
+                >
+                <input
+                  type="number"
+                  id="kRatio"
+                  name="kRatio"
+                  class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-yellow-500 focus:bg-white focus:ring-2 focus:ring-yellow-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+                />
+              </div>
+            </div>
+            <div class="p-2 w-1/2">
+              <div class="relative">
+                <label for="temp" class="leading-7 text-sm text-gray-600"
+                  >Temperature (°C)</label
+                >
+                <input
+                  type="number"
+                  id="temp"
+                  name="temp"
+                  class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-yellow-500 focus:bg-white focus:ring-2 focus:ring-yellow-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+                />
+              </div>
+            </div>
+            <div class="p-2 w-1/2">
+              <div class="relative">
+                <label for="humidity" class="leading-7 text-sm text-gray-600"
+                  >Humidity (%)</label
+                >
+                <input
+                  type="number"
+                  id="humidity"
+                  name="humidity"
+                  class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-yellow-500 focus:bg-white focus:ring-2 focus:ring-yellow-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+                />
+              </div>
+            </div>
+            <div class="p-2 w-1/2">
+              <div class="relative">
+                <label for="pH" class="leading-7 text-sm text-gray-600"
+                  >Soil pH Value</label
+                >
+                <input
+                  type="number"
+                  id="pH"
+                  name="pH"
+                  class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-yellow-500 focus:bg-white focus:ring-2 focus:ring-yellow-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+                />
+              </div>
+            </div>
+            <div class="p-2 w-full">
+              <div class="relative">
+                <label for="rainfall" class="leading-7 text-sm text-gray-600"
+                  >Rainfall (mm)</label
+                >
+                <input
+                  type="number"
+                  id="rainfall"
+                  name="rainfall"
+                  class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-yellow-500 focus:bg-white focus:ring-2 focus:ring-yellow-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+                />
+              </div>
+            </div>
+
+            <div class="p-2 w-full">
+              <button
+                type="submit"
+                class="flex mx-auto text-white bg-yellow-500 border-0 py-2 px-8 focus:outline-none hover:bg-yellow-600 rounded text-lg"
+              >
+                Submit
+              </button>
+            </div>
+            <div
+              class="p-2 w-full pt-8 mt-8 border-t border-gray-200 text-center"
+            >
+              <a class="text-yellow-500">Crop Recommendation System</a>
+              <p class="font-semibold leading-normal my-5">
+                FarmGenie <br />
+                Cultivating Success
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+
+    <hr />
+
+    {% if details|length != 0 %}
+    <section class="text-gray-600 body-font">
+      <div class="container px-5 py-8 mx-auto">
+        <div class="text-center mb-20">
+          <h1
+            class="sm:text-3xl text-2xl font-medium text-center title-font text-gray-900 mb-4"
+          >
+            Crop Recommendation
+          </h1>
+          <p class="text-base leading-relaxed xl:w-2/4 lg:w-3/4 mx-auto">
+            Here is the recommended crop which you should cultivate according to
+            your climatic conditions. Also, all the suitable conditions of this
+            crop are given.
+          </p>
+        </div>
+        <div class="flex flex-wrap lg:w-4/5 sm:mx-auto sm:mb-2 -mx-2">
+          <div class="p-2 sm:w-1/2 w-full">
+            <div class="bg-gray-100 rounded flex p-4 h-full items-center">
+              <svg
+                fill="none"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="3"
+                class="text-yellow-500 w-6 h-6 flex-shrink-0 mr-4"
+                viewBox="0 0 24 24"
+              >
+                <path d="M22 11.08V12a10 10 0 11-5.93-9.14"></path>
+                <path d="M22 4L12 14.01l-3-3"></path>
+              </svg>
+              <span class="title-font font-medium"
+                >Recommended Crop: ‟{{ details[0] }}”</span
+              >
+            </div>
+          </div>
+          <div class="p-2 sm:w-1/2 w-full">
+            <div class="bg-gray-100 rounded flex p-4 h-full items-center">
+              <svg
+                fill="none"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="3"
+                class="text-yellow-500 w-6 h-6 flex-shrink-0 mr-4"
+                viewBox="0 0 24 24"
+              >
+                <path d="M22 11.08V12a10 10 0 11-5.93-9.14"></path>
+                <path d="M22 4L12 14.01l-3-3"></path>
+              </svg>
+              <span class="title-font font-medium"
+                >Nitrogen Ratio: {{ details[1]|min|round }}kg/ha - {{
+                details[1]|max|round }}kg/ha</span
+              >
+            </div>
+          </div>
+          <div class="p-2 sm:w-1/2 w-full">
+            <div class="bg-gray-100 rounded flex p-4 h-full items-center">
+              <svg
+                fill="none"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="3"
+                class="text-yellow-500 w-6 h-6 flex-shrink-0 mr-4"
+                viewBox="0 0 24 24"
+              >
+                <path d="M22 11.08V12a10 10 0 11-5.93-9.14"></path>
+                <path d="M22 4L12 14.01l-3-3"></path>
+              </svg>
+              <span class="title-font font-medium"
+                >Phosphorous Ratio: {{ details[2]|min|round }}kg/ha - {{
+                details[2]|max|round }}kg/ha</span
+              >
+            </div>
+          </div>
+          <div class="p-2 sm:w-1/2 w-full">
+            <div class="bg-gray-100 rounded flex p-4 h-full items-center">
+              <svg
+                fill="none"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="3"
+                class="text-yellow-500 w-6 h-6 flex-shrink-0 mr-4"
+                viewBox="0 0 24 24"
+              >
+                <path d="M22 11.08V12a10 10 0 11-5.93-9.14"></path>
+                <path d="M22 4L12 14.01l-3-3"></path>
+              </svg>
+              <span class="title-font font-medium"
+                >Potassium Ratio: {{ details[3]|min|round }}kg/ha - {{
+                details[3]|max|round }}kg/ha</span
+              >
+            </div>
+          </div>
+          <div class="p-2 sm:w-1/2 w-full">
+            <div class="bg-gray-100 rounded flex p-4 h-full items-center">
+              <svg
+                fill="none"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="3"
+                class="text-yellow-500 w-6 h-6 flex-shrink-0 mr-4"
+                viewBox="0 0 24 24"
+              >
+                <path d="M22 11.08V12a10 10 0 11-5.93-9.14"></path>
+                <path d="M22 4L12 14.01l-3-3"></path>
+              </svg>
+              <span class="title-font font-medium"
+                >Temperature: {{ details[4]|min|round }}°C - {{
+                details[4]|max|round }}°C</span
+              >
+            </div>
+          </div>
+          <div class="p-2 sm:w-1/2 w-full">
+            <div class="bg-gray-100 rounded flex p-4 h-full items-center">
+              <svg
+                fill="none"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="3"
+                class="text-yellow-500 w-6 h-6 flex-shrink-0 mr-4"
+                viewBox="0 0 24 24"
+              >
+                <path d="M22 11.08V12a10 10 0 11-5.93-9.14"></path>
+                <path d="M22 4L12 14.01l-3-3"></path>
+              </svg>
+              <span class="title-font font-medium"
+                >Relative Humidity: {{ details[5]|min|round }}% - {{
+                details[5]|max|round }}%</span
+              >
+            </div>
+          </div>
+          <div class="p-2 sm:w-1/2 w-full">
+            <div class="bg-gray-100 rounded flex p-4 h-full items-center">
+              <svg
+                fill="none"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="3"
+                class="text-yellow-500 w-6 h-6 flex-shrink-0 mr-4"
+                viewBox="0 0 24 24"
+              >
+                <path d="M22 11.08V12a10 10 0 11-5.93-9.14"></path>
+                <path d="M22 4L12 14.01l-3-3"></path>
+              </svg>
+              <span class="title-font font-medium"
+                >pH Scale: {{ details[6]|min|round }} - {{ details[6]|max|round
+                }}</span
+              >
+            </div>
+          </div>
+          <div class="p-2 sm:w-1/2 w-full">
+            <div class="bg-gray-100 rounded flex p-4 h-full items-center">
+              <svg
+                fill="none"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="3"
+                class="text-yellow-500 w-6 h-6 flex-shrink-0 mr-4"
+                viewBox="0 0 24 24"
+              >
+                <path d="M22 11.08V12a10 10 0 11-5.93-9.14"></path>
+                <path d="M22 4L12 14.01l-3-3"></path>
+              </svg>
+              <span class="title-font font-medium"
+                >Rainfall: {{ details[7]|min|round }}mm - {{
+                details[7]|max|round }}mm</span
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    {% endif %}
+  </body>
+</html>

@@ -101,16 +101,16 @@ class ImageClassificationBase(nn.Module):
         epoch_accuracy = torch.stack(batch_accuracy).mean()
         return {"val_loss": epoch_loss, "val_accuracy": epoch_accuracy}
 
-    def epoch_end(self, epoch, result):
-        print(
-            "Epoch [{}], last_lr: {:.5f}, train_loss: {:.4f}, val_loss: {:.4f}, val_acc: {:.4f}".format(
-                epoch,
-                result["lrs"][-1],
-                result["train_loss"],
-                result["val_loss"],
-                result["val_accuracy"],
-            )
-        )
+    # def epoch_end(self, epoch, result):
+    #     print(
+    #         "Epoch [{}], last_lr: {:.5f}, train_loss: {:.4f}, val_loss: {:.4f}, val_acc: {:.4f}".format(
+    #             epoch,
+    #             result["lrs"][-1],
+    #             result["train_loss"],
+    #             result["val_loss"],
+    #             result["val_accuracy"],
+    #         )
+    #     )
 
 
 class ResNet9(ImageClassificationBase):
@@ -201,7 +201,6 @@ def desiredCrop():
             phList,
             rainList,
         ]
-
         return render_template("crop-rec.html", details=details)
     return render_template("crop-rec.html", details="")
 
@@ -210,7 +209,7 @@ def desiredCrop():
 def disease_prediction():
     if request.method == "POST":
         image = request.files["image"]
-        img = Image.open(image)
+        img = Image.open(image).convert('RGB')
         to_tensor = transforms.ToTensor()
         img2 = to_tensor(img)
         prediction = predict_image(img2, model)

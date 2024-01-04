@@ -6,6 +6,6 @@ tailwind.config.js
 Test
 new.py
 disease_prediction.html
-index.html
+/index.html
 .vercel
 vercel.json

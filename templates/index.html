@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='dist/css/output.css') }}"
+    />
+    <link
+      rel="shortcut icon"
+      href="{{url_for('static', filename='Circle Logo.png')}}"
+      type="image/x-icon"
+    />
+    <title>FarmGenie - Cultivating Success</title>
+  </head>
+
+  <body class="bg-gray-50">
+    <header class="text-gray-600 body-font">
+      <div
+        class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center"
+      >
+        <a
+          class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            class="w-10 h-10 text-white p-2 bg-yellow-500 rounded-full"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"
+            ></path>
+          </svg>
+          <a href="/" class="font-semibold"><span class="ml-3 text-xl">FarmGenie - Cultivating Success</span></a>
+        </a>
+        <nav
+          class="md:ml-auto flex flex-wrap items-center text-base justify-center"
+        >
+          <a href="/crop-recommendation-system"
+            class="mr-5 hover:text-gray-900 hover:cursor-pointer hover:font-semibold"
+            >Crop Recommendation System</a
+          >
+          <a href="/crop-disease-prediction-system"
+            class="mr-5 hover:text-gray-900 hover:cursor-pointer hover:font-semibold"
+            >Disease Prediction System</a
+          >
+        </nav>
+      </div>
+    </header>
+
+    <section class="text-gray-600 body-font">
+      <div class="container px-5 py-24 mx-auto">
+        <div class="flex flex-col text-center w-full mb-20">
+          <h2
+            class="text-xs text-yellow-500 tracking-widest font-medium title-font mb-1"
+          >
+            FARMGENIE - CULTIVATING SUCCESS
+          </h2>
+          <h1
+            class="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900"
+          >
+            Revolutionizing Crop Disease Prediction and Recommendation
+          </h1>
+          <p class="lg:w-2/3 mx-auto leading-relaxed text-base">
+            At FarmGenie, we are dedicated to transforming agriculture through
+            the power of AI. Our advanced Crop Disease Prediction and
+            Recommendation System analyzes data and patterns to provide timely
+            alerts, personalized recommendations, and actionable insights to
+            farmers. By minimizing crop losses, optimizing productivity, and
+            fostering sustainable practices, we are revolutionizing the way
+            crops are cultivated.
+          </p>
+        </div>
+        <h1
+          class="sm:text-2xl text-2xl text-center font-medium title-font mb-4 text-gray-900"
+        >
+          SDGs Impacted
+        </h1>
+        <div class="flex flex-wrap">
+          <div
+            class="xl:w-1/4 lg:w-1/2 md:w-full px-8 py-6 border-l-2 border-gray-200 border-opacity-60"
+          >
+            <h2
+              class="text-lg sm:text-xl text-gray-900 font-medium title-font mb-2"
+            >
+              SDG 2: Zero Hunger
+            </h2>
+            <p class="leading-relaxed text-base mb-4">
+              By minimizing crop losses due to diseases and pests, the project
+              contributes to ensuring food security and promoting sustainable
+              agriculture practices. Improved crop yields and optimized crop
+              selection can help address hunger and malnutrition issues.
+            </p>
+            <a class="text-yellow-500 inline-flex items-center"
+              >Learn More
+              <svg
+                fill="none"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                class="w-4 h-4 ml-2"
+                viewBox="0 0 24 24"
+              >
+                <path d="M5 12h14M12 5l7 7-7 7"></path>
+              </svg>
+            </a>
+          </div>
+          <div
+            class="xl:w-1/4 lg:w-1/2 md:w-full px-8 py-6 border-l-2 border-gray-200 border-opacity-60"
+          >
+            <h2
+              class="text-lg sm:text-xl text-gray-900 font-medium title-font mb-2"
+            >
+              SDG 9: Industry, Innovation, and Infrastructure
+            </h2>
+            <p class="leading-relaxed text-base mb-4">
+              The project leverages AI and advanced technologies to develop an
+              innovative solution for crop disease prediction and
+              recommendation. It promotes technological advancements in
+              agriculture, enhancing efficiency and productivity in the sector.
+            </p>
+            <a class="text-yellow-500 inline-flex items-center"
+              >Learn More
+              <svg
+                fill="none"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                class="w-4 h-4 ml-2"
+                viewBox="0 0 24 24"
+              >
+                <path d="M5 12h14M12 5l7 7-7 7"></path>
+              </svg>
+            </a>
+          </div>
+          <div
+            class="xl:w-1/4 lg:w-1/2 md:w-full px-8 py-6 border-l-2 border-gray-200 border-opacity-60"
+          >
+            <h2
+              class="text-lg sm:text-xl text-gray-900 font-medium title-font mb-2"
+            >
+              SDG 12: Responsible Consumption and Production
+            </h2>
+            <p class="leading-relaxed text-base mb-4">
+              The system's personalized crop recommendations enable farmers to
+              make informed decisions, optimizing resource allocation and
+              reducing unnecessary waste. It promotes sustainable production
+              practices, minimizing environmental impacts.
+            </p>
+            <a class="text-yellow-500 inline-flex items-center"
+              >Learn More
+              <svg
+                fill="none"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                class="w-4 h-4 ml-2"
+                viewBox="0 0 24 24"
+              >
+                <path d="M5 12h14M12 5l7 7-7 7"></path>
+              </svg>
+            </a>
+          </div>
+          <div
+            class="xl:w-1/4 lg:w-1/2 md:w-full px-8 py-6 border-l-2 border-gray-200 border-opacity-60"
+          >
+            <h2
+              class="text-lg sm:text-xl text-gray-900 font-medium title-font mb-2"
+            >
+              SDG 13: Climate Action
+            </h2>
+            <p class="leading-relaxed text-base mb-4">
+              By predicting crop diseases and providing recommendations, the
+              project helps farmers adapt to changing climate conditions. It
+              supports climate-resilient agriculture practices, reducing
+              vulnerability and enhancing the sector's ability to mitigate
+              climate-related risks
+            </p>
+            <a class="text-yellow-500 inline-flex items-center"
+              >Learn More
+              <svg
+                fill="none"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                class="w-4 h-4 ml-2"
+                viewBox="0 0 24 24"
+              >
+                <path d="M5 12h14M12 5l7 7-7 7"></path>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+    <script>
+      const togglerMoreDetails = () => {
+        const container = document.getElementById("moreDetails");
+        if (container.style.display !== "none") {
+          container.style.display = "none";
+          document.getElementById("toggleBtn").innerHTML =
+            '<svg aria-hidden="true" class="-ml-0.5 mr-2 h-4 w-4" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10 12a2 2 0 100-4 2 2 0 000 4z"></path><path fill-rule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clip-rule="evenodd"></path></svg> View More';
+        } else {
+          container.style.display = "block";
+          document.getElementById("toggleBtn").innerHTML =
+            '<svg aria-hidden="true" class="-ml-0.5 mr-2 h-4 w-4" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10 12a2 2 0 100-4 2 2 0 000 4z"></path><path fill-rule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clip-rule="evenodd"></path></svg> Hide More';
+        }
+      };
+    </script>
+  </body>
+</html>

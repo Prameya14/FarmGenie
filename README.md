@@ -72,7 +72,7 @@ pip install -r ./requirements.txt
 II. Start Flask Sever
 
 ```bash
-python ./main.py
+python ./app.py
 ```
 
 III. After that open the URL which pops up in the console and enjoy the application.

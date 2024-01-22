@@ -136,9 +136,9 @@
                 >Predictions</a
               >
             </div>
-            <p class="leading-relaxed mb-4">
+            <!-- <p class="leading-relaxed mb-4">
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi nostrum placeat id culpa sequi tempore ullam! Obcaecati odit architecto maxime quisquam nostrum sunt repudiandae laboriosam voluptates consequuntur ipsa tempore aut deserunt enim, quia delectus commodi? Officiis laborum rerum veritatis ab aperiam quos numquam impedit excepturi, repellendus beatae ullam asperiores quia!
-            </p>
+            </p> -->
             <div class="flex border-t border-gray-200 py-2">
               <span class="text-gray-500 font-semibold">Crop</span>
               <span class="ml-auto text-gray-900">{{ details[0] }}</span>
@@ -146,6 +146,11 @@
             <div class="flex border-t border-b border-gray-200 py-2">
               <span class="text-gray-500 font-semibold">Disease</span>
               <span class="ml-auto text-gray-900">{{ details[1] }}</span>
+            </div>
+            <div class="flex flex-col border-t border-b border-gray-200 py-2">
+              <span class="text-gray-500 font-semibold">Details</span>
+              <br>
+              <span class="ml-auto text-gray-900">{{ details[3] | safe }}</span>
             </div>
           </div>
           <img

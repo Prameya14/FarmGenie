@@ -8,6 +8,7 @@ import torchvision.transforms as transforms
 from PIL import Image
 import base64
 import io
+from openai import OpenAI
 
 with open("model.pkl", "rb") as file:
     model2 = pickle.load(file)
@@ -223,7 +224,17 @@ def disease_prediction():
         base64_image = base64.b64encode(image_bytes.read())
         base64_string = base64_image.decode("utf-8")
 
-        details = [crop, disease, base64_string]
+        # OpenAI Call
+        client = OpenAI(api_key="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")
+        chat_completion = client.chat.completions.create(
+            messages=[{
+                "role": "user",
+                "content": f"Write the causes and remedial measures of {disease} in {crop} crop. Write 3 points of each in very short. Give the html code to represent this using paragraph tags only and not the complete html code. Keep the required things in bold. Use strong tags to make the headings and other required parts bold.",
+            }],
+            model="gpt-3.5-turbo",
+        )
+
+        details = [crop, disease, base64_string, chat_completion.choices[0].message.content]
         return render_template("disease-pred.html", details=details)
     return render_template("disease-pred.html", details="")
 

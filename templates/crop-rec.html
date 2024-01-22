@@ -47,11 +47,13 @@
         <nav
           class="md:ml-auto flex flex-wrap items-center text-base justify-center"
         >
-          <a href="/crop-recommendation-system"
+          <a
+            href="/crop-recommendation-system"
             class="mr-5 hover:text-gray-900 hover:cursor-pointer hover:font-semibold"
             >Crop Recommendation System</a
           >
-          <a href="/crop-disease-prediction-system"
+          <a
+            href="/crop-disease-prediction-system"
             class="mr-5 hover:text-gray-900 hover:cursor-pointer hover:font-semibold"
             >Disease Prediction System</a
           >
@@ -201,15 +203,16 @@
           <h1
             class="sm:text-3xl text-2xl font-medium text-center title-font text-gray-900 mb-4"
           >
-            Crop Recommendation
+            Recommended Crop:
+            <span class="text-yellow-500">‟{{ details[0] }}”</span>
           </h1>
           <p class="text-base leading-relaxed xl:w-2/4 lg:w-3/4 mx-auto">
-            Here is the recommended crop which you should cultivate according to
-            your climatic conditions. Also, all the suitable conditions of this
-            crop are given.
+            Given below are the suitable conditions for the proper growth of
+            <span class="font-semibold">‟{{ details[0] }}”</span> in order to
+            get the maximum output and productivity.
           </p>
         </div>
-        <div class="flex flex-wrap lg:w-4/5 sm:mx-auto sm:mb-2 -mx-2">
+        <div class="flex justify-center flex-wrap lg:w-4/5 sm:mx-auto sm:mb-2 -mx-2">
           <div class="p-2 sm:w-1/2 w-full">
             <div class="bg-gray-100 rounded flex p-4 h-full items-center">
               <svg
@@ -224,9 +227,8 @@
                 <path d="M22 11.08V12a10 10 0 11-5.93-9.14"></path>
                 <path d="M22 4L12 14.01l-3-3"></path>
               </svg>
-              <span class="title-font font-medium"
-                >Recommended Crop: ‟{{ details[0] }}”</span
-              >
+              <span class="title-font font-medium">Nitrogen Ratio:&nbsp;</span> {{
+              details[1]|min|round }}kg/ha - {{ details[1]|max|round }}kg/ha
             </div>
           </div>
           <div class="p-2 sm:w-1/2 w-full">
@@ -243,10 +245,8 @@
                 <path d="M22 11.08V12a10 10 0 11-5.93-9.14"></path>
                 <path d="M22 4L12 14.01l-3-3"></path>
               </svg>
-              <span class="title-font font-medium"
-                >Nitrogen Ratio: {{ details[1]|min|round }}kg/ha - {{
-                details[1]|max|round }}kg/ha</span
-              >
+              <span class="title-font font-medium">Phosphorous Ratio:&nbsp;</span> {{
+              details[2]|min|round }}kg/ha - {{ details[2]|max|round }}kg/ha
             </div>
           </div>
           <div class="p-2 sm:w-1/2 w-full">
@@ -263,10 +263,8 @@
                 <path d="M22 11.08V12a10 10 0 11-5.93-9.14"></path>
                 <path d="M22 4L12 14.01l-3-3"></path>
               </svg>
-              <span class="title-font font-medium"
-                >Phosphorous Ratio: {{ details[2]|min|round }}kg/ha - {{
-                details[2]|max|round }}kg/ha</span
-              >
+              <span class="title-font font-medium">Potassium Ratio:&nbsp;</span> {{
+              details[3]|min|round }}kg/ha - {{ details[3]|max|round }}kg/ha
             </div>
           </div>
           <div class="p-2 sm:w-1/2 w-full">
@@ -283,10 +281,8 @@
                 <path d="M22 11.08V12a10 10 0 11-5.93-9.14"></path>
                 <path d="M22 4L12 14.01l-3-3"></path>
               </svg>
-              <span class="title-font font-medium"
-                >Potassium Ratio: {{ details[3]|min|round }}kg/ha - {{
-                details[3]|max|round }}kg/ha</span
-              >
+              <span class="title-font font-medium">Temperature:&nbsp;</span> {{
+              details[4]|min|round }}°C - {{ details[4]|max|round }}°C
             </div>
           </div>
           <div class="p-2 sm:w-1/2 w-full">
@@ -303,10 +299,8 @@
                 <path d="M22 11.08V12a10 10 0 11-5.93-9.14"></path>
                 <path d="M22 4L12 14.01l-3-3"></path>
               </svg>
-              <span class="title-font font-medium"
-                >Temperature: {{ details[4]|min|round }}°C - {{
-                details[4]|max|round }}°C</span
-              >
+              <span class="title-font font-medium">Relative Humidity:&nbsp;</span> {{
+              details[5]|min|round }}% - {{ details[5]|max|round }}%
             </div>
           </div>
           <div class="p-2 sm:w-1/2 w-full">
@@ -323,10 +317,8 @@
                 <path d="M22 11.08V12a10 10 0 11-5.93-9.14"></path>
                 <path d="M22 4L12 14.01l-3-3"></path>
               </svg>
-              <span class="title-font font-medium"
-                >Relative Humidity: {{ details[5]|min|round }}% - {{
-                details[5]|max|round }}%</span
-              >
+              <span class="title-font font-medium">pH Scale:&nbsp;</span> {{
+              details[6]|min|round }} - {{ details[6]|max|round }}
             </div>
           </div>
           <div class="p-2 sm:w-1/2 w-full">
@@ -343,30 +335,8 @@
                 <path d="M22 11.08V12a10 10 0 11-5.93-9.14"></path>
                 <path d="M22 4L12 14.01l-3-3"></path>
               </svg>
-              <span class="title-font font-medium"
-                >pH Scale: {{ details[6]|min|round }} - {{ details[6]|max|round
-                }}</span
-              >
-            </div>
-          </div>
-          <div class="p-2 sm:w-1/2 w-full">
-            <div class="bg-gray-100 rounded flex p-4 h-full items-center">
-              <svg
-                fill="none"
-                stroke="currentColor"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="3"
-                class="text-yellow-500 w-6 h-6 flex-shrink-0 mr-4"
-                viewBox="0 0 24 24"
-              >
-                <path d="M22 11.08V12a10 10 0 11-5.93-9.14"></path>
-                <path d="M22 4L12 14.01l-3-3"></path>
-              </svg>
-              <span class="title-font font-medium"
-                >Rainfall: {{ details[7]|min|round }}mm - {{
-                details[7]|max|round }}mm</span
-              >
+              <span class="title-font font-medium">Rainfall:&nbsp;</span> {{
+              details[7]|min|round }}mm - {{ details[7]|max|round }}mm
             </div>
           </div>
         </div>

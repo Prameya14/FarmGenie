@@ -24,30 +24,23 @@
         <a
           class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0"
         >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            stroke="currentColor"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            class="w-10 h-10 text-white p-2 bg-yellow-500 rounded-full"
-            viewBox="0 0 24 24"
+          <img src="{{url_for('static', filename='Circle Logo.png')}}" class="w-10 h-10 text-white rounded-full" alt="FarmGenie Logo">
+          <a href="/" class="font-semibold"
+            ><span class="ml-3 text-xl"
+              >FarmGenie - Cultivating Success</span
+            ></a
           >
-            <path
-              d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"
-            ></path>
-          </svg>
-          <a href="/" class="font-semibold"><span class="ml-3 text-xl">FarmGenie - Cultivating Success</span></a>
         </a>
         <nav
           class="md:ml-auto flex flex-wrap items-center text-base justify-center"
         >
-          <a href="/crop-recommendation-system"
+          <a
+            href="/crop-recommendation-system"
             class="mr-5 hover:text-gray-900 hover:cursor-pointer hover:font-semibold"
             >Crop Recommendation System</a
           >
-          <a href="/crop-disease-prediction-system"
+          <a
+            href="/crop-disease-prediction-system"
             class="mr-5 hover:text-gray-900 hover:cursor-pointer hover:font-semibold"
             >Disease Prediction System</a
           >
@@ -90,6 +83,18 @@
             <h2
               class="text-lg sm:text-xl text-gray-900 font-medium title-font mb-2"
             >
+              SDG 1: No Poverty
+            </h2>
+            <p class="leading-relaxed text-base mb-4">
+              FarmGenie significantly impacts SDG 1 by minimizing crop losses, ensuring optimal yield, and fostering sustainable farming practices. Through empowering farmers with AI-driven insights, it enhances economic stability in agriculture, contributing to poverty reduction and food security on a global scale.
+            </p>
+          </div>
+          <div
+            class="xl:w-1/4 lg:w-1/2 md:w-full px-8 py-6 border-l-2 border-gray-200 border-opacity-60"
+          >
+            <h2
+              class="text-lg sm:text-xl text-gray-900 font-medium title-font mb-2"
+            >
               SDG 2: Zero Hunger
             </h2>
             <p class="leading-relaxed text-base mb-4">
@@ -98,20 +103,6 @@
               agriculture practices. Improved crop yields and optimized crop
               selection can help address hunger and malnutrition issues.
             </p>
-            <a class="text-yellow-500 inline-flex items-center"
-              >Learn More
-              <svg
-                fill="none"
-                stroke="currentColor"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                class="w-4 h-4 ml-2"
-                viewBox="0 0 24 24"
-              >
-                <path d="M5 12h14M12 5l7 7-7 7"></path>
-              </svg>
-            </a>
           </div>
           <div
             class="xl:w-1/4 lg:w-1/2 md:w-full px-8 py-6 border-l-2 border-gray-200 border-opacity-60"
@@ -127,20 +118,6 @@
               recommendation. It promotes technological advancements in
               agriculture, enhancing efficiency and productivity in the sector.
             </p>
-            <a class="text-yellow-500 inline-flex items-center"
-              >Learn More
-              <svg
-                fill="none"
-                stroke="currentColor"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                class="w-4 h-4 ml-2"
-                viewBox="0 0 24 24"
-              >
-                <path d="M5 12h14M12 5l7 7-7 7"></path>
-              </svg>
-            </a>
           </div>
           <div
             class="xl:w-1/4 lg:w-1/2 md:w-full px-8 py-6 border-l-2 border-gray-200 border-opacity-60"
@@ -156,50 +133,6 @@
               reducing unnecessary waste. It promotes sustainable production
               practices, minimizing environmental impacts.
             </p>
-            <a class="text-yellow-500 inline-flex items-center"
-              >Learn More
-              <svg
-                fill="none"
-                stroke="currentColor"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                class="w-4 h-4 ml-2"
-                viewBox="0 0 24 24"
-              >
-                <path d="M5 12h14M12 5l7 7-7 7"></path>
-              </svg>
-            </a>
-          </div>
-          <div
-            class="xl:w-1/4 lg:w-1/2 md:w-full px-8 py-6 border-l-2 border-gray-200 border-opacity-60"
-          >
-            <h2
-              class="text-lg sm:text-xl text-gray-900 font-medium title-font mb-2"
-            >
-              SDG 13: Climate Action
-            </h2>
-            <p class="leading-relaxed text-base mb-4">
-              By predicting crop diseases and providing recommendations, the
-              project helps farmers adapt to changing climate conditions. It
-              supports climate-resilient agriculture practices, reducing
-              vulnerability and enhancing the sector's ability to mitigate
-              climate-related risks
-            </p>
-            <a class="text-yellow-500 inline-flex items-center"
-              >Learn More
-              <svg
-                fill="none"
-                stroke="currentColor"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                class="w-4 h-4 ml-2"
-                viewBox="0 0 24 24"
-              >
-                <path d="M5 12h14M12 5l7 7-7 7"></path>
-              </svg>
-            </a>
           </div>
         </div>
       </div>

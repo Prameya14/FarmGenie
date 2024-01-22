@@ -55,7 +55,7 @@ With our system, farmers can make informed decisions about what to plant, leadin
 
 -	**Exploratory Data Analysis –** Pandas, NumPy, Plotly and Matplotlib are used for performing EDA on the Dataset.
 
--	**AI Algorithm and Model –** LightGBM Model is used to train the AI Model
+-	**AI Algorithm and Model –** LightGBM Model is used to train the AI Model. The Disease Prediction System is trained on the ResNet9 Convolutional Neural Network.
 
 -	**Web App –** Flask is used as the Backend to serve the results and TailwindCSS is used to design the Web Page.
 
@@ -72,7 +72,7 @@ pip install -r ./requirements.txt
 II. Start Flask Sever
 
 ```bash
-python ./main.py
+python ./app.py
 ```
 
 III. After that open the URL which pops up in the console and enjoy the application.

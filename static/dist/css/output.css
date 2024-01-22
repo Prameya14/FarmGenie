@@ -1144,3 +1144,7 @@ video {
     width: 50%;
   }
 }
+
+strong {
+  font-weight: 500;
+}

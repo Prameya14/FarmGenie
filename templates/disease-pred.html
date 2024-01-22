@@ -24,20 +24,11 @@
         <a
           class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0"
         >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            stroke="currentColor"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            class="w-10 h-10 text-white p-2 bg-yellow-500 rounded-full"
-            viewBox="0 0 24 24"
-          >
-            <path
-              d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"
-            ></path>
-          </svg>
+          <img
+            src="{{url_for('static', filename='Circle Logo.png')}}"
+            class="w-10 h-10 text-white rounded-full"
+            alt="FarmGenie Logo"
+          />
           <a href="/" class="font-semibold"
             ><span class="ml-3 text-xl"
               >FarmGenie - Cultivating Success</span
@@ -149,7 +140,7 @@
             </div>
             <div class="flex flex-col border-t border-b border-gray-200 py-2">
               <span class="text-gray-500 font-semibold">Details</span>
-              <br>
+              <br />
               <span class="ml-auto text-gray-900">{{ details[3] | safe }}</span>
             </div>
           </div>

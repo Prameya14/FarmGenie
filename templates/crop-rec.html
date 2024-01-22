@@ -24,20 +24,11 @@
         <a
           class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0"
         >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            stroke="currentColor"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            class="w-10 h-10 text-white p-2 bg-yellow-500 rounded-full"
-            viewBox="0 0 24 24"
-          >
-            <path
-              d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"
-            ></path>
-          </svg>
+          <img
+            src="{{url_for('static', filename='Circle Logo.png')}}"
+            class="w-10 h-10 text-white rounded-full"
+            alt="FarmGenie Logo"
+          />
           <a href="/" class="font-semibold"
             ><span class="ml-3 text-xl"
               >FarmGenie - Cultivating Success</span
@@ -212,7 +203,9 @@
             get the maximum output and productivity.
           </p>
         </div>
-        <div class="flex justify-center flex-wrap lg:w-4/5 sm:mx-auto sm:mb-2 -mx-2">
+        <div
+          class="flex justify-center flex-wrap lg:w-4/5 sm:mx-auto sm:mb-2 -mx-2"
+        >
           <div class="p-2 sm:w-1/2 w-full">
             <div class="bg-gray-100 rounded flex p-4 h-full items-center">
               <svg
@@ -227,8 +220,8 @@
                 <path d="M22 11.08V12a10 10 0 11-5.93-9.14"></path>
                 <path d="M22 4L12 14.01l-3-3"></path>
               </svg>
-              <span class="title-font font-medium">Nitrogen Ratio:&nbsp;</span> {{
-              details[1]|min|round }}kg/ha - {{ details[1]|max|round }}kg/ha
+              <span class="title-font font-medium">Nitrogen Ratio:&nbsp;</span>
+              {{ details[1]|min|round }}kg/ha - {{ details[1]|max|round }}kg/ha
             </div>
           </div>
           <div class="p-2 sm:w-1/2 w-full">
@@ -245,8 +238,10 @@
                 <path d="M22 11.08V12a10 10 0 11-5.93-9.14"></path>
                 <path d="M22 4L12 14.01l-3-3"></path>
               </svg>
-              <span class="title-font font-medium">Phosphorous Ratio:&nbsp;</span> {{
-              details[2]|min|round }}kg/ha - {{ details[2]|max|round }}kg/ha
+              <span class="title-font font-medium"
+                >Phosphorous Ratio:&nbsp;</span
+              >
+              {{ details[2]|min|round }}kg/ha - {{ details[2]|max|round }}kg/ha
             </div>
           </div>
           <div class="p-2 sm:w-1/2 w-full">
@@ -263,8 +258,8 @@
                 <path d="M22 11.08V12a10 10 0 11-5.93-9.14"></path>
                 <path d="M22 4L12 14.01l-3-3"></path>
               </svg>
-              <span class="title-font font-medium">Potassium Ratio:&nbsp;</span> {{
-              details[3]|min|round }}kg/ha - {{ details[3]|max|round }}kg/ha
+              <span class="title-font font-medium">Potassium Ratio:&nbsp;</span>
+              {{ details[3]|min|round }}kg/ha - {{ details[3]|max|round }}kg/ha
             </div>
           </div>
           <div class="p-2 sm:w-1/2 w-full">
@@ -299,8 +294,10 @@
                 <path d="M22 11.08V12a10 10 0 11-5.93-9.14"></path>
                 <path d="M22 4L12 14.01l-3-3"></path>
               </svg>
-              <span class="title-font font-medium">Relative Humidity:&nbsp;</span> {{
-              details[5]|min|round }}% - {{ details[5]|max|round }}%
+              <span class="title-font font-medium"
+                >Relative Humidity:&nbsp;</span
+              >
+              {{ details[5]|min|round }}% - {{ details[5]|max|round }}%
             </div>
           </div>
           <div class="p-2 sm:w-1/2 w-full">

@@ -4,6 +4,18 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Alef:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        font-family: sans-serif;
+        font-family: 700;
+      }
+    </style>
     <link
       rel="stylesheet"
       href="{{ url_for('static', filename='dist/css/output.css') }}"
@@ -24,7 +36,11 @@
         <a
           class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0"
         >
-          <img src="{{url_for('static', filename='Circle Logo.png')}}" class="w-10 h-10 text-white rounded-full" alt="FarmGenie Logo">
+          <img
+            src="{{url_for('static', filename='Circle Logo.png')}}"
+            class="w-12 h-12 text-white rounded-full"
+            alt="FarmGenie Logo"
+          />
           <a href="/" class="font-semibold"
             ><span class="ml-3 text-xl"
               >FarmGenie - Cultivating Success</span
@@ -36,32 +52,39 @@
         >
           <a
             href="/crop-recommendation-system"
-            class="mr-5 hover:text-gray-900 hover:cursor-pointer hover:font-semibold"
+            class="mr-5 hover:text-yellow-500 hover:cursor-pointer font-semibold"
             >Crop Recommendation System</a
           >
           <a
             href="/crop-disease-prediction-system"
-            class="mr-5 hover:text-gray-900 hover:cursor-pointer hover:font-semibold"
+            class="mr-5 hover:text-yellow-500 hover:cursor-pointer font-semibold"
             >Disease Prediction System</a
           >
         </nav>
       </div>
     </header>
-
+    <hr />
     <section class="text-gray-600 body-font">
-      <div class="container px-5 py-24 mx-auto">
-        <div class="flex flex-col text-center w-full mb-20">
+      <div
+        class="container mx-auto flex px-5 py-12 items-center justify-center flex-col"
+      >
+        <img
+          class="lg:w-1/6 md:w-2/6 w-3/6 mb-10 object-cover object-center rounded-full border-green-900 border-2"
+          alt="hero"
+          src="{{url_for('static', filename='Circle Logo.png')}}"
+        />
+        <div class="text-center lg:w-2/3 w-full">
           <h2
-            class="text-xs text-yellow-500 tracking-widest font-medium title-font mb-1"
+            class="text-lg text-yellow-500 tracking-widest font-medium title-font mb-1"
           >
-            FARMGENIE - CULTIVATING SUCCESS
+            FarmGenie - Cultivating Success
           </h2>
           <h1
-            class="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900"
+            class="title-font sm:text-3xl text-2xl mb-4 font-medium text-gray-900"
           >
             Revolutionizing Crop Disease Prediction and Recommendation
           </h1>
-          <p class="lg:w-2/3 mx-auto leading-relaxed text-base">
+          <p class="mb-8 leading-relaxed">
             At FarmGenie, we are dedicated to transforming agriculture through
             the power of AI. Our advanced Crop Disease Prediction and
             Recommendation System analyzes data and patterns to provide timely
@@ -70,73 +93,743 @@
             fostering sustainable practices, we are revolutionizing the way
             crops are cultivated.
           </p>
-        </div>
-        <h1
-          class="sm:text-2xl text-2xl text-center font-medium title-font mb-4 text-gray-900"
-        >
-          SDGs Impacted
-        </h1>
-        <div class="flex flex-wrap">
-          <div
-            class="xl:w-1/4 lg:w-1/2 md:w-full px-8 py-6 border-l-2 border-gray-200 border-opacity-60"
-          >
-            <h2
-              class="text-lg sm:text-xl text-gray-900 font-medium title-font mb-2"
+          <div class="flex justify-center">
+            <button
+              class="w-1/3 inline-flex text-white bg-yellow-500 border-0 py-2 px-6 focus:outline-none hover:bg-yellow-600 rounded text-lg"
             >
-              SDG 1: No Poverty
-            </h2>
-            <p class="leading-relaxed text-base mb-4">
-              FarmGenie significantly impacts SDG 1 by minimizing crop losses, ensuring optimal yield, and fostering sustainable farming practices. Through empowering farmers with AI-driven insights, it enhances economic stability in agriculture, contributing to poverty reduction and food security on a global scale.
-            </p>
-          </div>
-          <div
-            class="xl:w-1/4 lg:w-1/2 md:w-full px-8 py-6 border-l-2 border-gray-200 border-opacity-60"
-          >
-            <h2
-              class="text-lg sm:text-xl text-gray-900 font-medium title-font mb-2"
+              <a href="/crop-recommendation-system" class="text-center w-full"
+                >Crop Recommendation System</a
+              >
+            </button>
+            <button
+              class="w-1/3 ml-4 inline-flex text-gray-700 bg-gray-200 border-0 py-2 px-6 focus:outline-none hover:bg-gray-200 rounded text-lg"
             >
-              SDG 2: Zero Hunger
-            </h2>
-            <p class="leading-relaxed text-base mb-4">
-              By minimizing crop losses due to diseases and pests, the project
-              contributes to ensuring food security and promoting sustainable
-              agriculture practices. Improved crop yields and optimized crop
-              selection can help address hunger and malnutrition issues.
-            </p>
-          </div>
-          <div
-            class="xl:w-1/4 lg:w-1/2 md:w-full px-8 py-6 border-l-2 border-gray-200 border-opacity-60"
-          >
-            <h2
-              class="text-lg sm:text-xl text-gray-900 font-medium title-font mb-2"
-            >
-              SDG 9: Industry, Innovation, and Infrastructure
-            </h2>
-            <p class="leading-relaxed text-base mb-4">
-              The project leverages AI and advanced technologies to develop an
-              innovative solution for crop disease prediction and
-              recommendation. It promotes technological advancements in
-              agriculture, enhancing efficiency and productivity in the sector.
-            </p>
-          </div>
-          <div
-            class="xl:w-1/4 lg:w-1/2 md:w-full px-8 py-6 border-l-2 border-gray-200 border-opacity-60"
-          >
-            <h2
-              class="text-lg sm:text-xl text-gray-900 font-medium title-font mb-2"
-            >
-              SDG 12: Responsible Consumption and Production
-            </h2>
-            <p class="leading-relaxed text-base mb-4">
-              The system's personalized crop recommendations enable farmers to
-              make informed decisions, optimizing resource allocation and
-              reducing unnecessary waste. It promotes sustainable production
-              practices, minimizing environmental impacts.
-            </p>
+              <a
+                href="/crop-disease-prediction-system"
+                class="text-center w-full"
+                >Disease Prediction System</a
+              >
+            </button>
           </div>
         </div>
       </div>
     </section>
+    <hr />
+    <section class="text-gray-600 body-font">
+      <div class="container px-5 py-12 mx-auto">
+        <div class="flex flex-wrap w-full mb-20">
+          <div class="lg:w-1/2 w-full mb-6 lg:mb-0">
+            <h1
+              class="sm:text-3xl text-2xl font-medium title-font mb-2 text-gray-900"
+            >
+              SDGs Impacted
+            </h1>
+            <div class="h-1 w-20 bg-yellow-500 rounded"></div>
+          </div>
+          <p class="lg:w-1/2 w-full leading-relaxed text-gray-500">
+            Highlighting our project's impact on the United Nations Sustainable
+            Development Goals (SDGs), showcasing our dedication to global
+            progress. Through targeted efforts, we contribute to sustainable
+            development and societal advancement.
+          </p>
+        </div>
+        <div class="flex flex-wrap -m-4">
+          <div class="xl:w-1/4 md:w-1/2 p-4">
+            <div class="bg-gray-100 h-full p-6 rounded-lg">
+              <img
+                class="h-40 rounded w-full object-cover object-center mb-6"
+                src="{{url_for('static', filename='img/Thumbnail-SDG-1.png')}}"
+                alt="content"
+              />
+              <h3
+                class="tracking-widest text-yellow-500 text-xs font-medium title-font"
+              >
+                SDG - 1
+              </h3>
+              <h2 class="text-lg text-gray-900 font-medium title-font mb-4">
+                No Poverty
+              </h2>
+              <p class="leading-relaxed text-base">
+                FarmGenie significantly impacts SDG 1 by minimizing crop losses,
+                ensuring optimal yield, and fostering sustainable farming
+                practices. Through empowering farmers with AI-driven insights,
+                it enhances economic stability in agriculture, contributing to
+                poverty reduction and food security on a global scale.
+              </p>
+            </div>
+          </div>
+          <div class="xl:w-1/4 md:w-1/2 p-4">
+            <div class="bg-gray-100 h-full p-6 rounded-lg">
+              <img
+                class="h-40 rounded w-full object-cover object-center mb-6"
+                src="{{url_for('static', filename='img/Thumbnail-SDG-2.png')}}"
+                alt="content"
+              />
+              <h3
+                class="tracking-widest text-yellow-500 text-xs font-medium title-font"
+              >
+                SDG - 2
+              </h3>
+              <h2 class="text-lg text-gray-900 font-medium title-font mb-4">
+                Zero Hunger
+              </h2>
+              <p class="leading-relaxed text-base">
+                By minimizing crop losses due to diseases and pests, the project
+                contributes to ensuring food security and promoting sustainable
+                agriculture practices. Improved crop yields and optimized crop
+                selection can help address hunger and malnutrition issues.
+              </p>
+            </div>
+          </div>
+          <div class="xl:w-1/4 md:w-1/2 p-4">
+            <div class="bg-gray-100 h-full p-6 rounded-lg">
+              <img
+                class="h-40 rounded w-full object-cover object-center mb-6"
+                src="{{url_for('static', filename='img/Thumbnail-SDG-9.png')}}"
+                alt="content"
+              />
+              <h3
+                class="tracking-widest text-yellow-500 text-xs font-medium title-font"
+              >
+                SDG - 9
+              </h3>
+              <h2 class="text-lg text-gray-900 font-medium title-font mb-4">
+                Industry, Innovation, and Infrastructure
+              </h2>
+              <p class="leading-relaxed text-base">
+                The project leverages AI and advanced technologies to develop an
+                innovative solution for crop disease prediction and
+                recommendation. It promotes technological advancements in
+                agriculture, enhancing efficiency and productivity in the
+                sector.
+              </p>
+            </div>
+          </div>
+          <div class="xl:w-1/4 md:w-1/2 p-4">
+            <div class="bg-gray-100 h-full p-6 rounded-lg">
+              <img
+                class="h-40 rounded w-full object-cover object-center mb-6"
+                src="{{url_for('static', filename='img/Thumbnail-SDG-12.png')}}"
+                alt="content"
+              />
+              <h3
+                class="tracking-widest text-yellow-500 text-xs font-medium title-font"
+              >
+                SDG - 12
+              </h3>
+              <h2 class="text-lg text-gray-900 font-medium title-font mb-4">
+                Responsible Consumption and Production
+              </h2>
+              <p class="leading-relaxed text-base">
+                The system's personalized crop recommendations enable farmers to
+                make informed decisions, optimizing resource allocation and
+                reducing unnecessary waste. It promotes sustainable production
+                practices, minimizing environmental impacts.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <hr />
+    <section class="text-gray-600 body-font">
+      <div class="container px-5 py-12 mx-auto flex flex-wrap">
+        <div class="flex flex-wrap w-full mb-20">
+          <div class="lg:w-1/2 w-full mb-6 lg:mb-0">
+            <h1
+              class="sm:text-3xl text-2xl font-medium title-font mb-2 text-gray-900"
+            >
+              Future Scope
+            </h1>
+            <div class="h-1 w-20 bg-yellow-500 rounded"></div>
+          </div>
+          <p class="lg:w-1/2 w-full leading-relaxed text-gray-500">
+            Presenting the future roadmap of our AI project, highlighting key
+            areas of growth and improvement. From functionality expansion to
+            security reinforcement, we aim to elevate project capabilities for
+            enhanced performance and user experience.
+          </p>
+        </div>
+        <div class="flex relative pt-10 pb-20 sm:items-center md:w-2/3 mx-auto">
+          <div
+            class="h-full w-6 absolute inset-0 flex items-center justify-center"
+          >
+            <div class="h-full w-1 bg-gray-200 pointer-events-none"></div>
+          </div>
+          <div
+            class="flex-shrink-0 w-6 h-6 rounded-full mt-10 sm:mt-0 inline-flex items-center justify-center bg-yellow-500 text-white relative z-10 title-font font-medium text-sm"
+          >
+            1
+          </div>
+          <div
+            class="flex-grow md:pl-8 pl-6 flex sm:items-center items-start flex-col sm:flex-row"
+          >
+            <div
+              class="flex-shrink-0 w-24 h-24 bg-yellow-100 text-yellow-500 rounded-full inline-flex items-center justify-center"
+            >
+              <svg
+                version="1.0"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 80.000000 80.000000"
+                preserveAspectRatio="xMidYMid meet"
+                class="w-16 h-16"
+              >
+                <g
+                  transform="translate(0.000000,80.000000) scale(0.100000,-0.100000)"
+                  fill="currentColor"
+                  stroke="none"
+                >
+                  <path
+                    d="M372 728 c-6 -6 -12 -17 -12 -24 0 -18 -66 -27 -90 -12 -27 17 -55
+-1 -55 -36 -1 -34 -37 -70 -71 -71 -35 0 -53 -28 -36 -55 18 -29 6 -84 -21
+-95 -30 -13 -30 -57 0 -70 27 -11 39 -66 21 -95 -17 -27 1 -55 36 -55 34 -1
+70 -37 71 -71 0 -35 28 -53 55 -36 29 18 84 6 95 -21 13 -30 57 -30 70 0 11
+27 66 39 95 21 27 -17 55 1 55 36 1 34 37 70 71 71 35 0 53 28 36 55 -18 29
+-6 84 21 95 14 7 22 19 22 35 0 16 -8 28 -22 35 -27 11 -39 66 -21 95 17 27
+-1 55 -36 55 -14 1 -36 11 -48 23 -12 12 -22 34 -23 48 0 35 -28 53 -55 36
+-29 -18 -84 -6 -95 21 -11 25 -45 33 -63 15z m47 -30 c11 -30 93 -51 115 -30
+18 19 39 6 31 -19 -9 -29 52 -91 82 -84 27 6 40 -12 21 -31 -21 -22 0 -104 30
+-115 12 -5 22 -13 22 -19 0 -6 -10 -14 -22 -19 -30 -11 -51 -93 -30 -115 18
+-18 6 -39 -19 -31 -26 9 -93 -58 -84 -84 8 -25 -13 -37 -31 -19 -22 21 -104 0
+-115 -30 -11 -28 -27 -28 -38 0 -11 30 -93 51 -115 30 -19 -19 -37 -6 -31 21
+7 30 -55 91 -84 82 -25 -8 -38 13 -19 31 21 22 0 104 -30 115 -12 5 -22 13
+-22 19 0 6 10 14 22 19 30 11 51 93 30 115 -19 19 -6 37 21 31 30 -7 91 55 82
+84 -8 25 13 38 31 19 22 -21 104 0 115 30 5 12 13 22 19 22 6 0 14 -10 19 -22z"
+                  />
+                  <path
+                    d="M390 640 c0 -5 5 -10 10 -10 6 0 10 5 10 10 0 6 -4 10 -10 10 -5 0
+-10 -4 -10 -10z"
+                  />
+                  <path
+                    d="M420 640 c0 -5 5 -10 11 -10 5 0 7 5 4 10 -3 6 -8 10 -11 10 -2 0 -4
+-4 -4 -10z"
+                  />
+                  <path
+                    d="M245 590 c-3 -5 -1 -10 4 -10 6 0 11 5 11 10 0 6 -2 10 -4 10 -3 0
+-8 -4 -11 -10z"
+                  />
+                  <path
+                    d="M315 581 c-38 -17 -83 -57 -74 -65 30 -25 102 -56 119 -51 17 6 20
+15 20 71 0 72 -3 74 -65 45z m37 -93 c-11 -11 -84 30 -76 43 3 5 22 18 42 28
+l37 19 3 -40 c2 -23 -1 -45 -6 -50z"
+                  />
+                  <path
+                    d="M420 536 c0 -56 3 -65 20 -71 17 -5 89 26 119 51 9 8 -36 48 -74 65
+-62 29 -65 27 -65 -45z m104 -5 c7 -11 -62 -53 -75 -46 -5 4 -9 26 -9 51 l0
+44 39 -20 c22 -11 42 -24 45 -29z"
+                  />
+                  <path
+                    d="M560 570 c0 -5 5 -10 10 -10 6 0 10 5 10 10 0 6 -4 10 -10 10 -5 0
+-10 -4 -10 -10z"
+                  />
+                  <path
+                    d="M215 560 c3 -5 8 -10 11 -10 2 0 4 5 4 10 0 6 -5 10 -11 10 -5 0 -7
+-4 -4 -10z"
+                  />
+                  <path
+                    d="M190 530 c0 -5 5 -10 11 -10 5 0 7 5 4 10 -3 6 -8 10 -11 10 -2 0 -4
+-4 -4 -10z"
+                  />
+                  <path
+                    d="M205 440 c-7 -39 1 -120 12 -120 3 0 27 12 54 28 38 21 49 32 49 52
+0 20 -11 31 -49 53 -27 15 -51 27 -54 27 -3 0 -8 -18 -12 -40z m95 -40 c0 -17
+-63 -53 -74 -43 -8 8 -8 78 0 86 11 10 74 -26 74 -43z"
+                  />
+                  <path
+                    d="M528 452 c-67 -38 -66 -67 1 -104 27 -16 51 -28 54 -28 3 0 8 18 12
+40 7 41 -2 120 -13 120 -4 0 -28 -13 -54 -28z m52 -51 c0 -49 -5 -53 -46 -34
+-43 21 -43 45 -1 65 41 20 47 16 47 -31z"
+                  />
+                  <path
+                    d="M625 470 c-3 -5 -1 -10 4 -10 6 0 11 5 11 10 0 6 -2 10 -4 10 -3 0
+-8 -4 -11 -10z"
+                  />
+                  <path
+                    d="M160 460 c0 -5 5 -10 11 -10 5 0 7 5 4 10 -3 6 -8 10 -11 10 -2 0 -4
+-4 -4 -10z"
+                  />
+                  <path
+                    d="M630 430 c0 -5 5 -10 11 -10 5 0 7 5 4 10 -3 6 -8 10 -11 10 -2 0 -4
+-4 -4 -10z"
+                  />
+                  <path
+                    d="M630 390 c0 -5 5 -10 10 -10 6 0 10 5 10 10 0 6 -4 10 -10 10 -5 0
+-10 -4 -10 -10z"
+                  />
+                  <path
+                    d="M160 340 c0 -5 5 -10 11 -10 5 0 7 5 4 10 -3 6 -8 10 -11 10 -2 0 -4
+-4 -4 -10z"
+                  />
+                  <path
+                    d="M290 313 c-25 -14 -47 -28 -49 -30 -16 -12 90 -82 127 -83 20 0 17
+126 -4 134 -23 9 -25 8 -74 -21z m68 -47 l3 -47 -40 20 c-22 12 -42 25 -45 30
+-7 10 53 51 69 47 6 -1 11 -24 13 -50z"
+                  />
+                  <path
+                    d="M433 333 c-9 -3 -13 -27 -13 -69 0 -72 3 -74 65 -45 38 17 83 57 74
+65 -14 12 -97 56 -105 55 -5 0 -15 -3 -21 -6z m61 -34 c41 -24 39 -32 -15 -59
+l-39 -20 0 43 c0 38 5 57 16 57 2 0 19 -9 38 -21z"
+                  />
+                  <path
+                    d="M170 300 c0 -5 5 -10 10 -10 6 0 10 5 10 10 0 6 -4 10 -10 10 -5 0
+-10 -4 -10 -10z"
+                  />
+                  <path
+                    d="M575 240 c3 -5 8 -10 11 -10 2 0 4 5 4 10 0 6 -5 10 -11 10 -5 0 -7
+-4 -4 -10z"
+                  />
+                </g>
+              </svg>
+            </div>
+            <div class="flex-grow sm:pl-6 mt-6 sm:mt-0">
+              <h2 class="font-medium title-font text-gray-900 mb-1 text-xl">
+                Enhanced Functionality
+              </h2>
+              <p class="leading-relaxed">
+                Expand capabilities to include natural language processing,
+                image recognition, and predictive analytics.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="flex relative pb-20 sm:items-center md:w-2/3 mx-auto">
+          <div
+            class="h-full w-6 absolute inset-0 flex items-center justify-center"
+          >
+            <div class="h-full w-1 bg-gray-200 pointer-events-none"></div>
+          </div>
+          <div
+            class="flex-shrink-0 w-6 h-6 rounded-full mt-10 sm:mt-0 inline-flex items-center justify-center bg-yellow-500 text-white relative z-10 title-font font-medium text-sm"
+          >
+            2
+          </div>
+          <div
+            class="flex-grow md:pl-8 pl-6 flex sm:items-center items-start flex-col sm:flex-row"
+          >
+            <div
+              class="flex-shrink-0 w-24 h-24 bg-yellow-100 text-yellow-500 rounded-full inline-flex items-center justify-center"
+            >
+              <svg
+                version="1.0"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 64.000000 64.000000"
+                preserveAspectRatio="xMidYMid meet"
+                class="w-16 h-16"
+              >
+                <g
+                  transform="translate(0.000000,64.000000) scale(0.100000,-0.100000)"
+                  fill="currentColor"
+                  stroke="none"
+                >
+                  <path
+                    d="M285 612 c-32 -11 -60 -30 -54 -36 3 -4 23 1 44 10 38 16 60 13 123
+           -12 19 -9 14 10 -7 23 -25 15 -81 23 -106 15z"
+                  />
+                  <path
+                    d="M273 563 c-28 -11 -10 -18 47 -18 59 0 75 7 44 19 -18 7 -73 7 -91
+           -1z"
+                  />
+                  <path
+                    d="M295 520 c-4 -6 7 -10 25 -10 18 0 29 4 25 10 -3 6 -15 10 -25 10
+           -10 0 -22 -4 -25 -10z"
+                  />
+                  <path
+                    d="M255 476 c-42 -18 -93 -79 -101 -121 -9 -49 3 -100 31 -134 33 -38
+           32 -81 0 -111 -22 -21 -34 -50 -20 -50 15 0 64 68 65 88 0 32 24 23 28 -10 2
+           -13 -4 -31 -12 -38 -15 -12 -22 -40 -10 -40 13 0 43 47 44 68 0 13 6 22 15 22
+           11 0 15 -12 15 -45 0 -25 5 -45 10 -45 6 0 10 20 10 45 0 33 4 45 15 45 9 0
+           15 -9 15 -22 1 -21 31 -68 44 -68 12 0 5 28 -10 40 -8 7 -14 25 -12 38 4 33
+           28 42 28 10 1 -20 50 -88 65 -88 14 0 2 29 -20 50 -32 30 -33 73 0 111 48 58
+           45 146 -8 206 -52 60 -125 78 -192 49z m94 -32 c26 -34 19 -44 -29 -44 -21 0
+           -41 4 -44 9 -6 10 31 61 44 61 5 0 18 -12 29 -26z m-88 -13 c-7 -12 -17 -18
+           -26 -15 -21 9 -19 19 8 31 28 13 31 10 18 -16z m159 -2 c0 -17 -30 -17 -40 1
+           -15 28 -13 31 15 18 14 -6 25 -15 25 -19z m-179 -42 c-1 -4 -1 -18 -1 -32 0
+           -22 -4 -25 -35 -25 -39 0 -42 8 -20 50 12 24 19 28 36 22 11 -5 20 -11 20 -15z
+           m214 -7 c22 -42 19 -50 -19 -50 -30 0 -34 3 -38 31 -4 29 3 38 39 48 1 1 9
+           -12 18 -29z m-77 -24 c3 -26 2 -26 -57 -26 -57 0 -61 1 -61 23 0 32 1 32 62
+           31 49 -1 53 -3 56 -28z m-138 -71 c0 -14 1 -28 3 -31 1 -4 -8 -10 -20 -15 -19
+           -7 -25 -3 -38 21 -22 42 -19 50 20 50 31 0 35 -3 35 -25z m138 -1 c-3 -25 -6
+           -27 -58 -27 -52 0 -55 2 -58 27 -3 26 -2 26 58 26 60 0 61 0 58 -26z m92 16
+           c0 -6 -7 -24 -15 -40 -13 -24 -19 -28 -38 -21 -12 5 -21 11 -19 15 1 3 2 17 2
+           31 0 22 4 25 35 25 19 0 35 -5 35 -10z m-105 -69 c3 -5 -6 -22 -20 -38 l-25
+           -28 -25 28 c-31 35 -25 47 25 47 21 0 41 -4 45 -9z m-95 -43 c0 -4 -11 -2 -25
+           4 -27 12 -32 24 -12 31 12 5 37 -19 37 -35z m150 23 c0 -4 -11 -13 -25 -19
+           -28 -13 -30 -10 -15 18 10 18 40 18 40 1z"
+                  />
+                  <path
+                    d="M43 388 c-27 -56 -26 -104 3 -142 21 -30 26 -13 8 29 -16 38 -13 60
+           12 123 10 22 -12 13 -23 -10z"
+                  />
+                  <path
+                    d="M574 398 c25 -63 28 -85 12 -123 -18 -42 -13 -59 8 -29 29 38 30 86
+           3 142 -11 23 -33 32 -23 10z"
+                  />
+                  <path
+                    d="M76 364 c-12 -32 -4 -104 13 -104 3 0 6 27 6 60 0 59 -7 75 -19 44z"
+                  />
+                  <path
+                    d="M545 320 c0 -59 7 -75 19 -44 12 32 4 104 -13 104 -3 0 -6 -27 -6
+           -60z"
+                  />
+                  <path
+                    d="M115 338 c-4 -10 -4 -26 0 -35 8 -17 8 -17 12 0 3 9 3 25 0 35 -4 16
+           -4 16 -12 0z"
+                  />
+                  <path
+                    d="M510 320 c0 -18 4 -29 10 -25 6 3 10 15 10 25 0 10 -4 22 -10 25 -6
+           4 -10 -7 -10 -25z"
+                  />
+                  <path
+                    d="M160 30 c0 -5 5 -10 10 -10 6 0 10 5 10 10 0 6 -4 10 -10 10 -5 0
+           -10 -4 -10 -10z"
+                  />
+                  <path
+                    d="M230 30 c0 -5 5 -10 10 -10 6 0 10 5 10 10 0 6 -4 10 -10 10 -5 0
+           -10 -4 -10 -10z"
+                  />
+                  <path
+                    d="M310 30 c0 -5 5 -10 10 -10 6 0 10 5 10 10 0 6 -4 10 -10 10 -5 0
+           -10 -4 -10 -10z"
+                  />
+                  <path
+                    d="M390 30 c0 -5 5 -10 10 -10 6 0 10 5 10 10 0 6 -4 10 -10 10 -5 0
+           -10 -4 -10 -10z"
+                  />
+                  <path
+                    d="M460 30 c0 -5 5 -10 10 -10 6 0 10 5 10 10 0 6 -4 10 -10 10 -5 0
+           -10 -4 -10 -10z"
+                  />
+                </g>
+              </svg>
+            </div>
+            <div class="flex-grow sm:pl-6 mt-6 sm:mt-0">
+              <h2 class="font-medium title-font text-gray-900 mb-1 text-xl">
+                Integration with IoT Devices
+              </h2>
+              <p class="leading-relaxed">
+                Incorporate connectivity with IoT devices for data gathering and
+                analysis, enabling smarter decision-making
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="flex relative pb-20 sm:items-center md:w-2/3 mx-auto">
+          <div
+            class="h-full w-6 absolute inset-0 flex items-center justify-center"
+          >
+            <div class="h-full w-1 bg-gray-200 pointer-events-none"></div>
+          </div>
+          <div
+            class="flex-shrink-0 w-6 h-6 rounded-full mt-10 sm:mt-0 inline-flex items-center justify-center bg-yellow-500 text-white relative z-10 title-font font-medium text-sm"
+          >
+            3
+          </div>
+          <div
+            class="flex-grow md:pl-8 pl-6 flex sm:items-center items-start flex-col sm:flex-row"
+          >
+            <div
+              class="flex-shrink-0 w-24 h-24 bg-yellow-100 text-yellow-500 rounded-full inline-flex items-center justify-center"
+            >
+              <svg
+                version="1.0"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 50.000000 50.000000"
+                preserveAspectRatio="xMidYMid meet"
+                class="w-16 h-16"
+              >
+                <g
+                  transform="translate(0.000000,50.000000) scale(0.100000,-0.100000)"
+                  fill="currentColor"
+                  stroke="none"
+                >
+                  <path
+                    d="M155 456 c-60 -28 -87 -56 -114 -116 -36 -79 -19 -183 42 -249 33
+           -36 115 -71 167 -71 52 0 134 35 167 71 34 37 63 110 63 159 0 52 -35 134 -71
+           167 -37 34 -110 63 -159 63 -27 0 -65 -10 -95 -24z m180 -15 c72 -32 125 -113
+           125 -191 0 -110 -100 -210 -210 -210 -144 0 -250 156 -194 288 45 109 173 161
+           279 113z"
+                  />
+                  <path
+                    d="M240 420 c0 -11 5 -20 10 -20 6 0 10 9 10 20 0 11 -4 20 -10 20 -5 0
+           -10 -9 -10 -20z"
+                  />
+                  <path
+                    d="M156 396 c3 -9 11 -16 16 -16 13 0 5 23 -10 28 -7 2 -10 -2 -6 -12z"
+                  />
+                  <path
+                    d="M327 403 c-10 -9 -9 -23 2 -23 5 0 11 7 15 15 5 15 -5 20 -17 8z"
+                  />
+                  <path
+                    d="M92 339 c2 -7 10 -15 17 -17 8 -3 12 1 9 9 -2 7 -10 15 -17 17 -8 3
+           -12 -1 -9 -9z"
+                  />
+                  <path
+                    d="M311 316 c-47 -18 -90 -40 -95 -49 -14 -22 4 -52 32 -52 21 0 162
+           110 162 126 0 13 -7 11 -99 -25z m-14 -52 c-37 -35 -57 -39 -65 -16 -3 11 68
+           50 93 51 6 0 -7 -15 -28 -35z"
+                  />
+                  <path
+                    d="M60 250 c0 -5 9 -10 20 -10 11 0 20 5 20 10 0 6 -9 10 -20 10 -11 0
+           -20 -4 -20 -10z"
+                  />
+                  <path
+                    d="M400 250 c0 -5 9 -10 20 -10 11 0 20 5 20 10 0 6 -9 10 -20 10 -11 0
+           -20 -4 -20 -10z"
+                  />
+                  <path
+                    d="M97 173 c-12 -12 -7 -22 8 -17 8 4 15 10 15 15 0 11 -14 12 -23 2z"
+                  />
+                  <path
+                    d="M380 172 c0 -5 7 -13 16 -16 10 -4 14 -1 12 6 -5 15 -28 23 -28 10z"
+                  />
+                </g>
+              </svg>
+            </div>
+            <div class="flex-grow sm:pl-6 mt-6 sm:mt-0">
+              <h2 class="font-medium title-font text-gray-900 mb-1 text-xl">
+                Scalability and Performance Optimization
+              </h2>
+              <p class="leading-relaxed">
+                Enhance scalability to handle larger datasets and optimize
+                performance for faster processing.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="flex relative pb-20 sm:items-center md:w-2/3 mx-auto">
+          <div
+            class="h-full w-6 absolute inset-0 flex items-center justify-center"
+          >
+            <div class="h-full w-1 bg-gray-200 pointer-events-none"></div>
+          </div>
+          <div
+            class="flex-shrink-0 w-6 h-6 rounded-full mt-10 sm:mt-0 inline-flex items-center justify-center bg-yellow-500 text-white relative z-10 title-font font-medium text-sm"
+          >
+            4
+          </div>
+          <div
+            class="flex-grow md:pl-8 pl-6 flex sm:items-center items-start flex-col sm:flex-row"
+          >
+            <div
+              class="flex-shrink-0 w-24 h-24 bg-yellow-100 text-yellow-500 rounded-full inline-flex items-center justify-center"
+            >
+              <svg
+                version="1.0"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 64.000000 64.000000"
+                preserveAspectRatio="xMidYMid meet"
+                class="w-16 h-16"
+              >
+                <g
+                  transform="translate(0.000000,64.000000) scale(0.100000,-0.100000)"
+                  fill="currentColor"
+                  stroke="none"
+                >
+                  <path
+                    d="M33 622 c-27 -17 -33 -70 -33 -301 0 -265 5 -294 52 -310 41 -15 495
+           -15 536 0 47 16 52 45 52 310 0 231 -6 284 -33 301 -16 10 -558 10 -574 0z
+           m565 -79 l3 -53 -280 0 -281 0 0 48 c0 27 3 52 7 55 4 4 128 6 277 5 l271 -3
+           3 -52z m2 -288 c0 -192 -1 -205 -19 -215 -26 -14 -496 -14 -522 0 -18 10 -19
+           23 -19 215 l0 205 280 0 280 0 0 -205z"
+                  />
+                  <path
+                    d="M83 548 c2 -7 10 -13 17 -13 7 0 15 6 18 13 2 7 -5 12 -18 12 -13 0
+           -20 -5 -17 -12z"
+                  />
+                  <path
+                    d="M163 548 c2 -7 10 -13 17 -13 7 0 15 6 18 13 2 7 -5 12 -18 12 -13 0
+           -20 -5 -17 -12z"
+                  />
+                  <path
+                    d="M205 378 c-3 -8 -4 -70 -3 -139 3 -102 6 -124 18 -124 13 0 15 22 15
+           134 0 99 -3 135 -12 138 -7 3 -15 -2 -18 -9z"
+                  />
+                  <path
+                    d="M405 378 c-3 -8 -4 -70 -3 -139 3 -102 6 -124 18 -124 13 0 15 22 15
+           134 0 99 -3 135 -12 138 -7 3 -15 -2 -18 -9z"
+                  />
+                </g>
+              </svg>
+            </div>
+            <div class="flex-grow sm:pl-6 mt-6 sm:mt-0">
+              <h2 class="font-medium title-font text-gray-900 mb-1 text-xl">
+                User Interface Refinement
+              </h2>
+              <p class="leading-relaxed">
+                Improve user interface for enhanced user experience, making the
+                system more intuitive and accessible.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="flex relative pb-10 sm:items-center md:w-2/3 mx-auto">
+          <div
+            class="h-full w-6 absolute inset-0 flex items-center justify-center"
+          >
+            <div class="h-full w-1 bg-gray-200 pointer-events-none"></div>
+          </div>
+          <div
+            class="flex-shrink-0 w-6 h-6 rounded-full mt-10 sm:mt-0 inline-flex items-center justify-center bg-yellow-500 text-white relative z-10 title-font font-medium text-sm"
+          >
+            5
+          </div>
+          <div
+            class="flex-grow md:pl-8 pl-6 flex sm:items-center items-start flex-col sm:flex-row"
+          >
+            <div
+              class="flex-shrink-0 w-24 h-24 bg-yellow-100 text-yellow-500 rounded-full inline-flex items-center justify-center"
+            >
+              <svg
+                version="1.0"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 80.000000 80.000000"
+                preserveAspectRatio="xMidYMid meet"
+                class="w-16 h-16"
+              >
+                <g
+                  transform="translate(0.000000,80.000000) scale(0.100000,-0.100000)"
+                  fill="currentColor"
+                  stroke="none"
+                >
+                  <path
+                    d="M325 701 c-69 -32 -115 -102 -115 -175 0 -35 -1 -35 -47 -38 l-48 -3
+           -3 -150 c-1 -83 -7 -159 -13 -171 -6 -12 -9 -32 -7 -45 l3 -24 305 0 305 0 3
+           24 c2 13 -1 33 -7 45 -6 12 -12 88 -13 171 l-3 150 -47 3 -48 3 0 37 c0 20 -9
+           55 -19 77 -45 98 -152 140 -246 96z m155 -24 c52 -27 90 -90 90 -149 l0 -38
+           -170 0 -170 0 0 38 c0 59 38 122 90 149 55 29 105 29 160 0z m190 -362 c0 -97
+           4 -155 10 -155 6 0 10 -11 10 -25 l0 -25 -290 0 -290 0 0 25 c0 14 5 25 10 25
+           6 0 10 58 10 155 l0 155 270 0 270 0 0 -155z"
+                  />
+                  <path
+                    d="M150 430 c0 -5 5 -10 10 -10 6 0 10 5 10 10 0 6 -4 10 -10 10 -5 0
+           -10 -4 -10 -10z"
+                  />
+                  <path
+                    d="M190 430 c0 -5 5 -10 10 -10 6 0 10 5 10 10 0 6 -4 10 -10 10 -5 0
+           -10 -4 -10 -10z"
+                  />
+                  <path
+                    d="M230 430 c0 -5 5 -10 10 -10 6 0 10 5 10 10 0 6 -4 10 -10 10 -5 0
+           -10 -4 -10 -10z"
+                  />
+                  <path
+                    d="M270 430 c0 -5 5 -10 10 -10 6 0 10 5 10 10 0 6 -4 10 -10 10 -5 0
+           -10 -4 -10 -10z"
+                  />
+                  <path
+                    d="M310 430 c0 -5 5 -10 10 -10 6 0 10 5 10 10 0 6 -4 10 -10 10 -5 0
+           -10 -4 -10 -10z"
+                  />
+                  <path
+                    d="M350 430 c0 -5 5 -10 10 -10 6 0 10 5 10 10 0 6 -4 10 -10 10 -5 0
+           -10 -4 -10 -10z"
+                  />
+                  <path
+                    d="M390 430 c0 -5 5 -10 10 -10 6 0 10 5 10 10 0 6 -4 10 -10 10 -5 0
+           -10 -4 -10 -10z"
+                  />
+                  <path
+                    d="M430 430 c0 -5 5 -10 10 -10 6 0 10 5 10 10 0 6 -4 10 -10 10 -5 0
+           -10 -4 -10 -10z"
+                  />
+                  <path
+                    d="M470 430 c0 -5 5 -10 10 -10 6 0 10 5 10 10 0 6 -4 10 -10 10 -5 0
+           -10 -4 -10 -10z"
+                  />
+                  <path
+                    d="M510 430 c0 -5 5 -10 10 -10 6 0 10 5 10 10 0 6 -4 10 -10 10 -5 0
+           -10 -4 -10 -10z"
+                  />
+                  <path
+                    d="M550 430 c0 -5 5 -10 10 -10 6 0 10 5 10 10 0 6 -4 10 -10 10 -5 0
+           -10 -4 -10 -10z"
+                  />
+                  <path
+                    d="M590 430 c0 -5 5 -10 10 -10 6 0 10 5 10 10 0 6 -4 10 -10 10 -5 0
+           -10 -4 -10 -10z"
+                  />
+                  <path
+                    d="M630 430 c0 -5 5 -10 10 -10 6 0 10 5 10 10 0 6 -4 10 -10 10 -5 0
+           -10 -4 -10 -10z"
+                  />
+                  <path
+                    d="M351 386 c-87 -48 -50 -186 49 -186 51 0 100 49 100 99 0 75 -83 124
+           -149 87z m104 -31 c50 -49 15 -135 -55 -135 -41 0 -80 39 -80 80 0 19 9 40 25
+           55 15 16 36 25 55 25 19 0 40 -9 55 -25z"
+                  />
+                  <path
+                    d="M366 334 c-31 -30 -9 -84 34 -84 21 0 50 25 50 45 0 7 -9 15 -20 18
+           -11 3 -20 12 -20 21 0 20 -24 21 -44 0z"
+                  />
+                  <path
+                    d="M150 170 c0 -5 5 -10 10 -10 6 0 10 5 10 10 0 6 -4 10 -10 10 -5 0
+           -10 -4 -10 -10z"
+                  />
+                  <path
+                    d="M190 170 c0 -5 5 -10 10 -10 6 0 10 5 10 10 0 6 -4 10 -10 10 -5 0
+           -10 -4 -10 -10z"
+                  />
+                  <path
+                    d="M230 170 c0 -5 5 -10 10 -10 6 0 10 5 10 10 0 6 -4 10 -10 10 -5 0
+           -10 -4 -10 -10z"
+                  />
+                  <path
+                    d="M270 170 c0 -5 5 -10 10 -10 6 0 10 5 10 10 0 6 -4 10 -10 10 -5 0
+           -10 -4 -10 -10z"
+                  />
+                  <path
+                    d="M310 170 c0 -5 5 -10 10 -10 6 0 10 5 10 10 0 6 -4 10 -10 10 -5 0
+           -10 -4 -10 -10z"
+                  />
+                  <path
+                    d="M350 170 c0 -5 5 -10 10 -10 6 0 10 5 10 10 0 6 -4 10 -10 10 -5 0
+           -10 -4 -10 -10z"
+                  />
+                  <path
+                    d="M390 170 c0 -5 5 -10 10 -10 6 0 10 5 10 10 0 6 -4 10 -10 10 -5 0
+           -10 -4 -10 -10z"
+                  />
+                  <path
+                    d="M430 170 c0 -5 5 -10 10 -10 6 0 10 5 10 10 0 6 -4 10 -10 10 -5 0
+           -10 -4 -10 -10z"
+                  />
+                  <path
+                    d="M470 170 c0 -5 5 -10 10 -10 6 0 10 5 10 10 0 6 -4 10 -10 10 -5 0
+           -10 -4 -10 -10z"
+                  />
+                  <path
+                    d="M510 170 c0 -5 5 -10 10 -10 6 0 10 5 10 10 0 6 -4 10 -10 10 -5 0
+           -10 -4 -10 -10z"
+                  />
+                  <path
+                    d="M550 170 c0 -5 5 -10 10 -10 6 0 10 5 10 10 0 6 -4 10 -10 10 -5 0
+           -10 -4 -10 -10z"
+                  />
+                  <path
+                    d="M590 170 c0 -5 5 -10 10 -10 6 0 10 5 10 10 0 6 -4 10 -10 10 -5 0
+           -10 -4 -10 -10z"
+                  />
+                  <path
+                    d="M630 170 c0 -5 5 -10 10 -10 6 0 10 5 10 10 0 6 -4 10 -10 10 -5 0
+           -10 -4 -10 -10z"
+                  />
+                </g>
+              </svg>
+            </div>
+            <div class="flex-grow sm:pl-6 mt-6 sm:mt-0">
+              <h2 class="font-medium title-font text-gray-900 mb-1 text-xl">
+                Security and Privacy Measures
+              </h2>
+              <p class="leading-relaxed">
+                Implement robust security measures to safeguard data integrity
+                and user privacy, adhering to regulatory standards.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <hr />
     <script>
       const togglerMoreDetails = () => {
         const container = document.getElementById("moreDetails");

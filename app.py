@@ -102,17 +102,6 @@ class ImageClassificationBase(nn.Module):
         epoch_accuracy = torch.stack(batch_accuracy).mean()
         return {"val_loss": epoch_loss, "val_accuracy": epoch_accuracy}
 
-    # def epoch_end(self, epoch, result):
-    #     print(
-    #         "Epoch [{}], last_lr: {:.5f}, train_loss: {:.4f}, val_loss: {:.4f}, val_acc: {:.4f}".format(
-    #             epoch,
-    #             result["lrs"][-1],
-    #             result["train_loss"],
-    #             result["val_loss"],
-    #             result["val_accuracy"],
-    #         )
-    #     )
-
 
 class ResNet9(ImageClassificationBase):
     def __init__(self, in_channels, num_diseases):
@@ -210,7 +199,7 @@ def desiredCrop():
 def disease_prediction():
     if request.method == "POST":
         image = request.files["image"]
-        img = Image.open(image).convert('RGB')
+        img = Image.open(image).convert("RGB")
         to_tensor = transforms.ToTensor()
         img2 = to_tensor(img)
         prediction = predict_image(img2, model)
@@ -225,16 +214,23 @@ def disease_prediction():
         base64_string = base64_image.decode("utf-8")
 
         # OpenAI Call
-        client = OpenAI(api_key="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")
+        client = OpenAI(api_key="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")
         chat_completion = client.chat.completions.create(
-            messages=[{
-                "role": "user",
-                "content": f"Write the causes and remedial measures of {disease} in {crop} crop. Write 3 points of each in very short. Give the html code to represent this using paragraph tags only and not the complete html code. Keep the required things in bold. Use strong tags to make the headings and other required parts bold.",
-            }],
+            messages=[
+                {
+                    "role": "user",
+                    "content": f"Write the causes and remedial measures of {disease} in {crop} crop. Write 3 points of each in very short. Give the html code to represent this using <p> tags only and not the complete html code. Keep the required things in strong tag so that it appears bold. Use strong tags to make the headings and other required parts bold.",
+                }
+            ],
             model="gpt-3.5-turbo",
         )
 
-        details = [crop, disease, base64_string, chat_completion.choices[0].message.content]
+        details = [
+            crop,
+            disease,
+            base64_string,
+            chat_completion.choices[0].message.content,
+        ]
         return render_template("disease-pred.html", details=details)
     return render_template("disease-pred.html", details="")
 

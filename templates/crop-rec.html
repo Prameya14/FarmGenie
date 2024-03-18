@@ -5,6 +5,16 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link
+      href="https://fonts.googleapis.com/css2?family=Alef:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        font-family: sans-serif;
+        font-family: 700;
+      }
+    </style>
+    <link
       rel="stylesheet"
       href="{{ url_for('static', filename='dist/css/output.css') }}"
     />
@@ -26,7 +36,7 @@
         >
           <img
             src="{{url_for('static', filename='Circle Logo.png')}}"
-            class="w-10 h-10 text-white rounded-full"
+            class="w-12 h-12 text-white rounded-full"
             alt="FarmGenie Logo"
           />
           <a href="/" class="font-semibold"
@@ -40,18 +50,18 @@
         >
           <a
             href="/crop-recommendation-system"
-            class="mr-5 hover:text-gray-900 hover:cursor-pointer hover:font-semibold"
+            class="mr-5 text-yellow-500 hover:cursor-pointer font-semibold"
             >Crop Recommendation System</a
           >
           <a
             href="/crop-disease-prediction-system"
-            class="mr-5 hover:text-gray-900 hover:cursor-pointer hover:font-semibold"
+            class="mr-5 hover:text-yellow-500 hover:cursor-pointer font-semibold"
             >Disease Prediction System</a
           >
         </nav>
       </div>
     </header>
-
+    <hr />
     <form
       method="POST"
       action="/crop-recommendation-system"
@@ -206,7 +216,7 @@
         <div
           class="flex justify-center flex-wrap lg:w-4/5 sm:mx-auto sm:mb-2 -mx-2"
         >
-          <div class="p-2 sm:w-1/2 w-full">
+          <div class="p-2 sm:w-2/3 w-full">
             <div class="bg-gray-100 rounded flex p-4 h-full items-center">
               <svg
                 fill="none"
@@ -224,7 +234,7 @@
               {{ details[1]|min|round }}kg/ha - {{ details[1]|max|round }}kg/ha
             </div>
           </div>
-          <div class="p-2 sm:w-1/2 w-full">
+          <div class="p-2 sm:w-2/3 w-full">
             <div class="bg-gray-100 rounded flex p-4 h-full items-center">
               <svg
                 fill="none"
@@ -244,7 +254,7 @@
               {{ details[2]|min|round }}kg/ha - {{ details[2]|max|round }}kg/ha
             </div>
           </div>
-          <div class="p-2 sm:w-1/2 w-full">
+          <div class="p-2 sm:w-2/3 w-full">
             <div class="bg-gray-100 rounded flex p-4 h-full items-center">
               <svg
                 fill="none"
@@ -262,7 +272,7 @@
               {{ details[3]|min|round }}kg/ha - {{ details[3]|max|round }}kg/ha
             </div>
           </div>
-          <div class="p-2 sm:w-1/2 w-full">
+          <div class="p-2 sm:w-2/3 w-full">
             <div class="bg-gray-100 rounded flex p-4 h-full items-center">
               <svg
                 fill="none"
@@ -280,7 +290,7 @@
               details[4]|min|round }}°C - {{ details[4]|max|round }}°C
             </div>
           </div>
-          <div class="p-2 sm:w-1/2 w-full">
+          <div class="p-2 sm:w-2/3 w-full">
             <div class="bg-gray-100 rounded flex p-4 h-full items-center">
               <svg
                 fill="none"
@@ -300,7 +310,7 @@
               {{ details[5]|min|round }}% - {{ details[5]|max|round }}%
             </div>
           </div>
-          <div class="p-2 sm:w-1/2 w-full">
+          <div class="p-2 sm:w-2/3 w-full">
             <div class="bg-gray-100 rounded flex p-4 h-full items-center">
               <svg
                 fill="none"
@@ -318,7 +328,7 @@
               details[6]|min|round }} - {{ details[6]|max|round }}
             </div>
           </div>
-          <div class="p-2 sm:w-1/2 w-full">
+          <div class="p-2 sm:w-2/3 w-full">
             <div class="bg-gray-100 rounded flex p-4 h-full items-center">
               <svg
                 fill="none"

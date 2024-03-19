@@ -214,7 +214,7 @@ def disease_prediction():
         base64_string = base64_image.decode("utf-8")
 
         # OpenAI Call
-        client = OpenAI(api_key="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")
+        client = OpenAI(api_key="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")
         chat_completion = client.chat.completions.create(
             messages=[
                 {

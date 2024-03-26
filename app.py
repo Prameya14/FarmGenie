@@ -7,8 +7,9 @@ import torch.nn.functional as F
 import torchvision.transforms as transforms
 from PIL import Image
 import base64
-import io
+from io import BytesIO
 from openai import OpenAI
+from config import api_key
 
 with open("model.pkl", "rb") as file:
     model2 = pickle.load(file)
@@ -206,7 +207,7 @@ def disease_prediction():
         crop = prediction.split("___")[0].replace("_", " ").title()
         disease = prediction.split("___")[1].replace("_", " ").title()
 
-        image_bytes = io.BytesIO()
+        image_bytes = BytesIO()
         img.save(image_bytes, format="JPEG")
         image_bytes.seek(0)
 
@@ -214,7 +215,7 @@ def disease_prediction():
         base64_string = base64_image.decode("utf-8")
 
         # OpenAI Call
-        client = OpenAI(api_key="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")
+        client = OpenAI(api_key=api_key)
         chat_completion = client.chat.completions.create(
             messages=[
                 {

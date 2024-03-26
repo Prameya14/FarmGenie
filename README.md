@@ -1,6 +1,6 @@
 # FarmGenie - Cultivating Success
 
-🌾🤖👨‍🌾🌍🍴
+🌾🤖🌍
 The crop recommendation system project aims to solve the challenges faced by the agriculture industry by leveraging data science and machine learning to provide farmers with personalized insights and recommendations 🤖💻. By promoting sustainable farming practices, this project can help increase food production, reduce waste, and contribute to ending hunger and protecting the planet 🌍🌱🍴.
 
 ***

@@ -9,3 +9,5 @@ disease_prediction.html
 /index.html
 .vercel
 vercel.json
+config.py
+__pycache__

@@ -8,8 +8,6 @@ import torchvision.transforms as transforms
 from PIL import Image
 import base64
 from io import BytesIO
-from openai import OpenAI
-from config import api_key
 
 with open("model.pkl", "rb") as file:
     model2 = pickle.load(file)
@@ -87,7 +85,8 @@ class ImageClassificationBase(nn.Module):
         images, labels = batch
         out = self(images)
         loss = F.cross_entropy(out, labels)
-        return loss
+        return loss 
+    
 
     def validation_step(self, batch):
         images, labels = batch
@@ -115,7 +114,7 @@ class ResNet9(ImageClassificationBase):
         self.conv3 = ConvBlock(128, 256, pool=True)
         self.conv4 = ConvBlock(256, 512, pool=True)
         self.res2 = nn.Sequential(ConvBlock(512, 512), ConvBlock(512, 512))
-
+    
         self.classifier = nn.Sequential(
             nn.MaxPool2d(4), nn.Flatten(), nn.Linear(512, num_diseases)
         )
@@ -196,16 +195,28 @@ def desiredCrop():
     return render_template("crop-rec.html", details="")
 
 
+def fetch_details(crop, disease):
+    details = pandas.read_csv("details.csv")
+    token = [crop, disease]
+    n = len(list(details['crop']))
+    for i in range(0, n):
+        if token[0] == list(details['crop'])[i] and token[1] == list(details['disease'])[i]:
+            cause = list(details['causes'])[i].split(". ")
+            remedial_measure = list(details['remedial_measures'])[i].split(". ")
+            return [cause, remedial_measure]
+
+
 @app.route("/crop-disease-prediction-system", methods=["GET", "POST"])
 def disease_prediction():
     if request.method == "POST":
         image = request.files["image"]
         img = Image.open(image).convert("RGB")
+        print(type(image), type(img))
         to_tensor = transforms.ToTensor()
         img2 = to_tensor(img)
         prediction = predict_image(img2, model)
-        crop = prediction.split("___")[0].replace("_", " ").title()
-        disease = prediction.split("___")[1].replace("_", " ").title()
+        crop = prediction.split("___")[0].replace("_", " ").title().strip()
+        disease = prediction.split("___")[1].replace("_", " ").title().strip()
 
         image_bytes = BytesIO()
         img.save(image_bytes, format="JPEG")
@@ -213,28 +224,23 @@ def disease_prediction():
 
         base64_image = base64.b64encode(image_bytes.read())
         base64_string = base64_image.decode("utf-8")
-
-        # OpenAI Call
-        client = OpenAI(api_key=api_key)
-        chat_completion = client.chat.completions.create(
-            messages=[
-                {
-                    "role": "user",
-                    "content": f"Write the causes and remedial measures of {disease} in {crop} crop. Write 3 points of each in very short. Give the html code to represent this using <p> tags only and not the complete html code. Keep the required things in strong tag so that it appears bold. Use strong tags to make the headings and other required parts bold.",
-                }
-            ],
-            model="gpt-3.5-turbo",
-        )
+        
+        fd = fetch_details(crop.lower(), disease.lower())
+        if fd == None:
+            fd = [[], []]
+        print(fd)
 
         details = [
             crop,
             disease,
             base64_string,
-            chat_completion.choices[0].message.content,
+            fd[0],
+            fd[1]
         ]
+
         return render_template("disease-pred.html", details=details)
     return render_template("disease-pred.html", details="")
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(debug=True, port=5001)

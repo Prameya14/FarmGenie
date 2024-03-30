@@ -142,26 +142,51 @@
                 >Predictions</a
               >
             </div>
-            <!-- <p class="leading-relaxed mb-4">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi nostrum placeat id culpa sequi tempore ullam! Obcaecati odit architecto maxime quisquam nostrum sunt repudiandae laboriosam voluptates consequuntur ipsa tempore aut deserunt enim, quia delectus commodi? Officiis laborum rerum veritatis ab aperiam quos numquam impedit excepturi, repellendus beatae ullam asperiores quia!
-            </p> -->
             <div class="flex border-t border-gray-200 py-2">
               <span class="text-gray-500 font-semibold">Crop</span>
               <span class="ml-auto text-gray-900">{{ details[0] }}</span>
             </div>
             <div class="flex border-t border-b border-gray-200 py-2">
-              <span class="text-gray-500 font-semibold">Disease</span>
+              <span class="text-gray-500 font-semibold">
+                {% if details[3]|length != 0 %} Disease {% else %} Status {%
+                endif %}
+              </span>
               <span class="ml-auto text-gray-900">{{ details[1] }}</span>
             </div>
-            <div class="flex flex-col border-t border-b border-gray-200 py-2">
-              <span class="text-gray-500 font-semibold">Details</span>
-              <br />
-              <span class="ml-auto text-gray-900">{{ details[3] | safe }}</span>
+            {% if details[3]|length != 0 %}
+            <div>
+              <div class="flex flex-col border-t border-b border-gray-200 py-2">
+                <span class="text-gray-500 font-semibold">Causes</span>
+                <br />
+                <span class="ml-auto text-gray-900">
+                  <ul class="list-disc">
+                    {% for cause in details[3] %}
+                    <li>{{ cause }}</li>
+                    {% endfor %}
+                  </ul>
+                </span>
+              </div>
+              <div class="flex flex-col border-t border-b border-gray-200 py-2">
+                <span class="text-gray-500 font-semibold"
+                  >Remedial Measures</span
+                >
+                <br />
+                <span class="text-gray-900">
+                  <ul class="list-disc">
+                    {% for rm in details[4] %}
+                    <li>{{ rm }}</li>
+                    {% endfor %}
+                  </ul>
+                </span>
+              </div>
             </div>
+            {% else %}
+            <p class="py-3">Your crop is <strong>Healthy</strong>. Keep on continuing the same practices.</p>
+            {% endif %}
           </div>
           <img
             alt="ecommerce"
-            class="lg:w-1/2 w-full lg:h-auto h-48 object-cover object-center rounded"
+            class="lg:w-1/2 w-full h-auto object-cover object-center rounded"
             src="data:image/png;base64,{{ details[2] }}"
           />
         </div>

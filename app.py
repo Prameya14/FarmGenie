@@ -24,7 +24,7 @@ classes = [
     "Apple___Apple_scab",
     "Apple___Black_rot",
     "Apple___Cedar_apple_rust",
-    "Apple___healthy",  
+    "Apple___healthy",
     "Blueberry___healthy",
     "Cherry_(including_sour)___Powdery_mildew",
     "Cherry_(including_sour)___healthy",
@@ -289,6 +289,34 @@ def disease_prediction():
 
                 return render_template("disease-pred.html", details=details)
     return render_template("disease-pred.html", details="")
+
+
+@app.route("/crop-disease-prediction-system-2", methods=["GET", "POST"])
+def disease_prediction_2():
+    if request.method == "POST":
+        image = request.files["image"]
+        img = Image.open(image).convert("RGB").resize((256, 256))
+        to_tensor = transforms.ToTensor()
+        img2 = to_tensor(img)
+        prediction = predict_image(img2, model)
+        crop = prediction.split("___")[0].replace("_", " ").title().strip()
+        disease = prediction.split("___")[1].replace("_", " ").title().strip()
+
+        image_bytes = BytesIO()
+        img.save(image_bytes, format="JPEG")
+        image_bytes.seek(0)
+
+        base64_image = base64.b64encode(image_bytes.read())
+        base64_string = base64_image.decode("utf-8")
+
+        fd = fetch_details(crop.lower(), disease.lower())
+        if fd == None:
+            fd = [[], []]
+
+        details = [crop, disease, base64_string, fd[0], fd[1]]
+
+        return render_template("disease-pred-2.html", details=details)
+    return render_template("disease-pred-2.html", details="")
 
 
 if __name__ == "__main__":

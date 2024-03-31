@@ -88,8 +88,9 @@
         <div class="lg:w-1/2 md:w-2/3 mx-auto">
           <div class="flex flex-wrap -m-2">
             <div class="p-2 w-full">
-              <div class="relative">
-                <label for="image" class="leading-7 text-sm text-gray-600"
+              <div class="relative" id="box">
+                <!-- <img class="w-full lg:w-2/3 m-auto border-2 rounded-lg" src="{{ url_for('video_feed') }}" alt=""> -->
+                <!-- <label for="image" class="leading-7 text-sm text-gray-600"
                   >Disease Image (JPG/JPEG)</label
                 >
                 <input
@@ -97,16 +98,24 @@
                   id="image"
                   name="image"
                   class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-yellow-500 focus:bg-white focus:ring-2 focus:ring-yellow-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
-                />
+                /> -->
               </div>
             </div>
 
             <div class="p-2 w-full">
               <button
                 type="submit"
-                class="flex mx-auto text-white bg-yellow-500 border-0 py-2 px-8 focus:outline-none hover:bg-yellow-600 rounded text-lg"
+                id="submit"
+                class="hidden mx-auto text-white bg-yellow-500 border-0 py-2 px-8 focus:outline-none hover:bg-yellow-600 rounded text-lg"
               >
                 Submit
+              </button>
+              <button
+                type="button"
+                id="start"
+                class="flex mx-auto text-white bg-yellow-500 border-0 py-2 px-8 focus:outline-none hover:bg-yellow-600 rounded text-lg"
+              >
+                Start
               </button>
             </div>
             <div
@@ -158,8 +167,8 @@
               <div class="flex flex-col border-t border-b border-gray-200 py-2">
                 <span class="text-gray-500 font-semibold">Causes</span>
                 <br />
-                <span class="ml-auto text-gray-900">
-                  <ul class="list-disc">
+                <span class="text-gray-900">
+                  <ul class="list-disc ml-6">
                     {% for cause in details[3] %}
                     <li>{{ cause }}</li>
                     {% endfor %}
@@ -172,7 +181,7 @@
                 >
                 <br />
                 <span class="text-gray-900">
-                  <ul class="list-disc">
+                  <ul class="list-disc ml-6">
                     {% for rm in details[4] %}
                     <li>{{ rm }}</li>
                     {% endfor %}
@@ -181,7 +190,10 @@
               </div>
             </div>
             {% else %}
-            <p class="py-3">Your crop is <strong>Healthy</strong>. Keep on continuing the same practices.</p>
+            <p class="py-3">
+              Your crop is <strong>Healthy</strong>. Keep on continuing the same
+              practices.
+            </p>
             {% endif %}
           </div>
           <img
@@ -193,5 +205,20 @@
       </div>
     </section>
     {% endif %}
+
+    <script>
+      const start = document.getElementById("start");
+      start.addEventListener("click", () => {
+        var box = document.getElementById("box");
+        var img = document.createElement("img");
+        img.className = "w-full lg:w-2/3 m-auto border-2 rounded-lg";
+        img.src = "{{ url_for('video_feed') }}";
+        box.appendChild(img);
+
+        document.getElementById("submit").className =
+          "flex mx-auto text-white bg-yellow-500 border-0 py-2 px-8 focus:outline-none hover:bg-yellow-600 rounded text-lg";
+        start.classList.add("hidden");
+      });
+    </script>
   </body>
 </html>

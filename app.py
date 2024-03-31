@@ -1,4 +1,4 @@
-from flask import Flask, request, render_template
+from flask import Flask, request, render_template, Response
 import pickle
 import pandas
 import torch
@@ -8,6 +8,10 @@ import torchvision.transforms as transforms
 from PIL import Image
 import base64
 from io import BytesIO
+import cv2
+import io
+from werkzeug.datastructures import FileStorage
+import tempfile
 
 with open("model.pkl", "rb") as file:
     model2 = pickle.load(file)
@@ -20,7 +24,7 @@ classes = [
     "Apple___Apple_scab",
     "Apple___Black_rot",
     "Apple___Cedar_apple_rust",
-    "Apple___healthy",
+    "Apple___healthy",  
     "Blueberry___healthy",
     "Cherry_(including_sour)___Powdery_mildew",
     "Cherry_(including_sour)___healthy",
@@ -85,8 +89,7 @@ class ImageClassificationBase(nn.Module):
         images, labels = batch
         out = self(images)
         loss = F.cross_entropy(out, labels)
-        return loss 
-    
+        return loss
 
     def validation_step(self, batch):
         images, labels = batch
@@ -114,7 +117,7 @@ class ResNet9(ImageClassificationBase):
         self.conv3 = ConvBlock(128, 256, pool=True)
         self.conv4 = ConvBlock(256, 512, pool=True)
         self.res2 = nn.Sequential(ConvBlock(512, 512), ConvBlock(512, 512))
-    
+
         self.classifier = nn.Sequential(
             nn.MaxPool2d(4), nn.Flatten(), nn.Linear(512, num_diseases)
         )
@@ -198,49 +201,95 @@ def desiredCrop():
 def fetch_details(crop, disease):
     details = pandas.read_csv("details.csv")
     token = [crop, disease]
-    n = len(list(details['crop']))
+    n = len(list(details["crop"]))
     for i in range(0, n):
-        if token[0] == list(details['crop'])[i] and token[1] == list(details['disease'])[i]:
-            cause = list(details['causes'])[i].split(". ")
-            remedial_measure = list(details['remedial_measures'])[i].split(". ")
+        if (
+            token[0] == list(details["crop"])[i]
+            and token[1] == list(details["disease"])[i]
+        ):
+            cause = list(details["causes"])[i].split(". ")
+            remedial_measure = list(details["remedial_measures"])[i].split(". ")
             return [cause, remedial_measure]
+
+
+def capture_image():
+    cap = cv2.VideoCapture(2, cv2.CAP_DSHOW)
+    ret, frame = cap.read()
+    cap.release()
+    frame_resized = cv2.resize(frame, (256, 256))
+
+    return frame_resized
+
+
+def cv2_to_pillow(cv2_image):
+    ret, buffer = cv2.imencode(".jpg", cv2_image)
+    byte_stream = io.BytesIO(buffer)
+    pillow_image = Image.open(byte_stream)
+    return pillow_image
+
+
+@app.route("/video_feed")
+def video_feed():
+    return Response(
+        generate_frames(), mimetype="multipart/x-mixed-replace; boundary=frame"
+    )
+
+
+def generate_frames():
+    camera = cv2.VideoCapture(2, cv2.CAP_DSHOW)
+    while True:
+        success, frame = camera.read()
+        if not success:
+            break
+        else:
+            frame_resized = cv2.resize(frame, (256, 256))
+            ret, buffer = cv2.imencode(".jpg", frame_resized)
+
+            frame_bytes = buffer.tobytes()
+            yield (
+                b"--frame\r\n"
+                b"Content-Type: image/jpeg\r\n\r\n" + frame_bytes + b"\r\n"
+            )
 
 
 @app.route("/crop-disease-prediction-system", methods=["GET", "POST"])
 def disease_prediction():
     if request.method == "POST":
-        image = request.files["image"]
-        img = Image.open(image).convert("RGB")
-        print(type(image), type(img))
-        to_tensor = transforms.ToTensor()
-        img2 = to_tensor(img)
-        prediction = predict_image(img2, model)
-        crop = prediction.split("___")[0].replace("_", " ").title().strip()
-        disease = prediction.split("___")[1].replace("_", " ").title().strip()
+        i = capture_image()
+        i2 = cv2_to_pillow(i)
 
-        image_bytes = BytesIO()
-        img.save(image_bytes, format="JPEG")
-        image_bytes.seek(0)
+        with tempfile.NamedTemporaryFile(suffix=".jpg", delete=False) as temp_file:
+            i2.save(temp_file.name)
+            temp_file.close()
 
-        base64_image = base64.b64encode(image_bytes.read())
-        base64_string = base64_image.decode("utf-8")
-        
-        fd = fetch_details(crop.lower(), disease.lower())
-        if fd == None:
-            fd = [[], []]
-        print(fd)
+            with open(temp_file.name, "rb") as file:
+                file_storage = FileStorage(file)
 
-        details = [
-            crop,
-            disease,
-            base64_string,
-            fd[0],
-            fd[1]
-        ]
+                img = Image.open(file_storage).convert("RGB")
 
-        return render_template("disease-pred.html", details=details)
+                to_tensor = transforms.ToTensor()
+                img2 = to_tensor(img)
+                prediction = predict_image(img2, model)
+                crop = prediction.split("___")[0].replace("_", " ").title().strip()
+                disease = prediction.split("___")[1].replace("_", " ").title().strip()
+
+                image_bytes = BytesIO()
+                img.save(image_bytes, format="JPEG")
+                image_bytes.seek(0)
+
+                base64_image = base64.b64encode(image_bytes.read())
+                base64_string = base64_image.decode("utf-8")
+
+                fd = fetch_details(crop.lower(), disease.lower())
+
+                if fd == None:
+                    fd = [[], []]
+
+                details = [crop, disease, base64_string, fd[0], fd[1]]
+
+                return render_template("disease-pred.html", details=details)
     return render_template("disease-pred.html", details="")
 
 
 if __name__ == "__main__":
-    app.run(debug=True, port=5001)
+    app.run(debug=True, port=5000)

@@ -28,7 +28,7 @@
       href="{{ url_for('static', filename='Circle Logo.png') }}"
       type="image/x-icon"
     />
-    <title>FarmGenie - Cultivating Success</title>
+    <title>FarmGenie - Crop Disease Prediction System from Image</title>
   </head>
 
   <body class="bg-gray-50">
@@ -38,7 +38,7 @@
       >
         <a
           href="/"
-          class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0"
+          class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0 w-full justify-center xl:justify-normal xl:w-auto"
         >
           <img
             src="{{url_for('static', filename='Circle Logo.png')}}"
@@ -50,7 +50,7 @@
           >
         </a>
         <nav
-          class="md:ml-auto flex flex-wrap items-center text-base justify-center"
+          class="xl:ml-auto flex flex-wrap items-center text-base md:justify-around justify-center w-full xl:w-auto mt-2 xl:mt-0"
         >
           <a
             href="/crop-recommendation-system"
@@ -71,10 +71,18 @@
       </div>
     </header>
     <hr />
+    {% if details|length == 0 %}
+    <style>
+      #disease-pred-2 {
+        min-height: 78vh;
+      }
+    </style>
+    {% endif %}
     <form
+      id="disease-pred-2"
       method="POST"
       action="/crop-disease-prediction-system-2"
-      class="text-gray-600 body-font relative min-h-[78vh]"
+      class="text-gray-600 body-font relative"
       enctype="multipart/form-data"
     >
       <div class="container px-5 py-8 mx-auto">
@@ -82,7 +90,7 @@
           <h1
             class="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900"
           >
-            Crop Disease Prediction System
+            Crop Disease Prediction System from Image
           </h1>
           <p class="lg:w-2/3 mx-auto leading-relaxed text-base">
             Advanced solution for accurate and timely prediction of crop
@@ -116,7 +124,9 @@
             <div
               class="p-2 w-full pt-8 mt-8 border-t border-gray-200 text-center"
             >
-              <a class="text-yellow-500">Crop Disease Prediction System</a>
+              <a class="text-yellow-500"
+                >Crop Disease Prediction System from Image</a
+              >
               <p class="font-semibold leading-normal my-5">
                 FarmGenie <br />
                 Cultivating Success
@@ -136,7 +146,7 @@
               FARMGENIE
             </h2>
             <h1 class="text-gray-900 text-3xl title-font font-medium mb-4">
-              Crop Disease Prediction System
+              Crop Disease Prediction System from Image
             </h1>
             <div class="flex mb-4">
               <a

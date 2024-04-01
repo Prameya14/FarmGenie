@@ -35,7 +35,7 @@
       >
         <a
           href="/"
-          class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0"
+          class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0 w-full justify-center xl:justify-normal xl:w-auto"
         >
           <img
             src="{{url_for('static', filename='Circle Logo.png')}}"
@@ -47,7 +47,7 @@
           >
         </a>
         <nav
-          class="md:ml-auto flex flex-wrap items-center text-base justify-center"
+          class="xl:ml-auto flex flex-wrap items-center text-base md:justify-around justify-center w-full xl:w-auto mt-2 xl:mt-0"
         >
           <a
             href="/crop-recommendation-system"
@@ -97,23 +97,25 @@
             fostering sustainable practices, we are revolutionizing the way
             crops are cultivated.
           </p>
-          <div class="flex justify-center">
-            <button
-              class="w-1/3 inline-flex text-white bg-yellow-500 border-0 py-2 px-6 focus:outline-none hover:bg-yellow-600 rounded text-lg"
+          <div class="flex xl:flex-row flex-col justify-center items-center space-y-2 space-x-0 xl:space-y-0 xl:space-x-2">
+            <a
+              href="/crop-recommendation-system"
+              class="min-h-[5rem] flex items-center xl:w-1/3 w-3/4 justify-center text-white bg-yellow-500 border-0 py-2 px-6 focus:outline-none hover:bg-yellow-600 rounded text-lg"
             >
-              <a href="/crop-recommendation-system" class="text-center w-full"
-                >Crop Recommendation System</a
-              >
-            </button>
-            <button
-              class="w-1/3 ml-4 inline-flex text-gray-700 bg-gray-200 border-0 py-2 px-6 focus:outline-none hover:bg-gray-200 rounded text-lg"
+              Crop Recommendation System
+            </a>
+            <a
+              href="/crop-disease-prediction-system"
+              class="min-h-[5rem] flex items-center xl:w-1/3 w-3/4 justify-center text-gray-700 bg-gray-200 border-0 py-2 px-6 focus:outline-none hover:bg-gray-300 rounded text-lg"
             >
-              <a
-                href="/crop-disease-prediction-system"
-                class="text-center w-full"
-                >Disease Prediction System</a
-              >
-            </button>
+              Realtime Disease Prediction
+            </a>
+            <a
+              href="/crop-disease-prediction-system-2"
+              class="min-h-[5rem] flex items-center xl:w-1/3 w-3/4 justify-center text-white bg-green-600 border-0 py-2 px-6 focus:outline-none hover:bg-green-700 rounded text-lg"
+            >
+              Disease Prediction from Image
+            </a>
           </div>
         </div>
       </div>
@@ -141,7 +143,7 @@
           <div class="xl:w-1/4 md:w-1/2 p-4">
             <div class="bg-gray-100 h-full p-6 rounded-lg">
               <img
-                class="h-40 rounded w-full object-cover object-center mb-6"
+                class="rounded w-full object-cover object-center mb-6"
                 src="{{url_for('static', filename='img/Thumbnail-SDG-1.png')}}"
                 alt="content"
               />
@@ -165,7 +167,7 @@
           <div class="xl:w-1/4 md:w-1/2 p-4">
             <div class="bg-gray-100 h-full p-6 rounded-lg">
               <img
-                class="h-40 rounded w-full object-cover object-center mb-6"
+                class="rounded w-full object-cover object-center mb-6"
                 src="{{url_for('static', filename='img/Thumbnail-SDG-2.png')}}"
                 alt="content"
               />
@@ -188,7 +190,7 @@
           <div class="xl:w-1/4 md:w-1/2 p-4">
             <div class="bg-gray-100 h-full p-6 rounded-lg">
               <img
-                class="h-40 rounded w-full object-cover object-center mb-6"
+                class="rounded w-full object-cover object-center mb-6"
                 src="{{url_for('static', filename='img/Thumbnail-SDG-9.png')}}"
                 alt="content"
               />
@@ -212,7 +214,7 @@
           <div class="xl:w-1/4 md:w-1/2 p-4">
             <div class="bg-gray-100 h-full p-6 rounded-lg">
               <img
-                class="h-40 rounded w-full object-cover object-center mb-6"
+                class="rounded w-full object-cover object-center mb-6"
                 src="{{url_for('static', filename='img/Thumbnail-SDG-12.png')}}"
                 alt="content"
               />
@@ -269,7 +271,7 @@
             class="flex-grow md:pl-8 pl-6 flex sm:items-center items-start flex-col sm:flex-row"
           >
             <div
-              class="flex-shrink-0 w-24 h-24 bg-yellow-100 text-yellow-500 rounded-full inline-flex items-center justify-center"
+              class="flex-shrink-0 w-24 h-24 bg-yellow-100 text-yellow-600 rounded-full inline-flex items-center justify-center"
             >
               <svg
                 version="1.0"
@@ -411,7 +413,7 @@ l-39 -20 0 43 c0 38 5 57 16 57 2 0 19 -9 38 -21z"
             class="flex-grow md:pl-8 pl-6 flex sm:items-center items-start flex-col sm:flex-row"
           >
             <div
-              class="flex-shrink-0 w-24 h-24 bg-yellow-100 text-yellow-500 rounded-full inline-flex items-center justify-center"
+              class="flex-shrink-0 w-24 h-24 bg-yellow-100 text-yellow-600 rounded-full inline-flex items-center justify-center"
             >
               <svg
                 version="1.0"
@@ -532,7 +534,7 @@ l-39 -20 0 43 c0 38 5 57 16 57 2 0 19 -9 38 -21z"
             class="flex-grow md:pl-8 pl-6 flex sm:items-center items-start flex-col sm:flex-row"
           >
             <div
-              class="flex-shrink-0 w-24 h-24 bg-yellow-100 text-yellow-500 rounded-full inline-flex items-center justify-center"
+              class="flex-shrink-0 w-24 h-24 bg-yellow-100 text-yellow-600 rounded-full inline-flex items-center justify-center"
             >
               <svg
                 version="1.0"
@@ -615,7 +617,7 @@ l-39 -20 0 43 c0 38 5 57 16 57 2 0 19 -9 38 -21z"
             class="flex-grow md:pl-8 pl-6 flex sm:items-center items-start flex-col sm:flex-row"
           >
             <div
-              class="flex-shrink-0 w-24 h-24 bg-yellow-100 text-yellow-500 rounded-full inline-flex items-center justify-center"
+              class="flex-shrink-0 w-24 h-24 bg-yellow-100 text-yellow-600 rounded-full inline-flex items-center justify-center"
             >
               <svg
                 version="1.0"
@@ -681,7 +683,7 @@ l-39 -20 0 43 c0 38 5 57 16 57 2 0 19 -9 38 -21z"
             class="flex-grow md:pl-8 pl-6 flex sm:items-center items-start flex-col sm:flex-row"
           >
             <div
-              class="flex-shrink-0 w-24 h-24 bg-yellow-100 text-yellow-500 rounded-full inline-flex items-center justify-center"
+              class="flex-shrink-0 w-24 h-24 bg-yellow-100 text-yellow-600 rounded-full inline-flex items-center justify-center"
             >
               <svg
                 version="1.0"

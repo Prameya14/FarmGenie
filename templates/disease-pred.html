@@ -28,7 +28,7 @@
       href="{{ url_for('static', filename='Circle Logo.png') }}"
       type="image/x-icon"
     />
-    <title>FarmGenie - Cultivating Success</title>
+    <title>FarmGenie - Realtime Crop Disease Prediction System</title>
   </head>
 
   <body class="bg-gray-50">
@@ -38,7 +38,7 @@
       >
         <a
           href="/"
-          class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0"
+          class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0 w-full justify-center xl:justify-normal xl:w-auto"
         >
           <img
             src="{{url_for('static', filename='Circle Logo.png')}}"
@@ -50,7 +50,7 @@
           >
         </a>
         <nav
-          class="md:ml-auto flex flex-wrap items-center text-base justify-center"
+          class="xl:ml-auto flex flex-wrap items-center text-base md:justify-around justify-center w-full xl:w-auto mt-2 xl:mt-0"
         >
           <a
             href="/crop-recommendation-system"
@@ -71,10 +71,18 @@
       </div>
     </header>
     <hr />
+    {% if details|length == 0 %}
+    <style>
+      #disease-pred {
+        min-height: 78vh;
+      }
+    </style>
+    {% endif %}
     <form
+      id="disease-pred"
       method="POST"
       action="/crop-disease-prediction-system"
-      class="text-gray-600 body-font relative min-h-[78vh]"
+      class="text-gray-600 body-font relative"
       enctype="multipart/form-data"
     >
       <div class="container px-5 py-8 mx-auto">
@@ -82,7 +90,7 @@
           <h1
             class="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900"
           >
-            Crop Disease Prediction System
+            Realtime Crop Disease Prediction System
           </h1>
           <p class="lg:w-2/3 mx-auto leading-relaxed text-base">
             Advanced solution for accurate and timely prediction of crop
@@ -92,18 +100,7 @@
         <div class="lg:w-1/2 md:w-2/3 mx-auto">
           <div class="flex flex-wrap -m-2">
             <div class="p-2 w-full">
-              <div class="relative" id="box">
-                <!-- <img class="w-full lg:w-2/3 m-auto border-2 rounded-lg" src="{{ url_for('video_feed') }}" alt=""> -->
-                <!-- <label for="image" class="leading-7 text-sm text-gray-600"
-                  >Disease Image (JPG/JPEG)</label
-                >
-                <input
-                  type="file"
-                  id="image"
-                  name="image"
-                  class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-yellow-500 focus:bg-white focus:ring-2 focus:ring-yellow-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
-                /> -->
-              </div>
+              <div class="relative" id="box"></div>
             </div>
 
             <div class="p-2 w-full">
@@ -119,13 +116,15 @@
                 id="start"
                 class="flex mx-auto text-white bg-yellow-500 border-0 py-2 px-8 focus:outline-none hover:bg-yellow-600 rounded text-lg"
               >
-                Start
+                Turn On Camera
               </button>
             </div>
             <div
               class="p-2 w-full pt-8 mt-8 border-t border-gray-200 text-center"
             >
-              <a class="text-yellow-500">Crop Disease Prediction System</a>
+              <a class="text-yellow-500"
+                >Realtime Crop Disease Prediction System</a
+              >
               <p class="font-semibold leading-normal my-5">
                 FarmGenie <br />
                 Cultivating Success
@@ -145,7 +144,7 @@
               FARMGENIE
             </h2>
             <h1 class="text-gray-900 text-3xl title-font font-medium mb-4">
-              Crop Disease Prediction System
+              Realtime Crop Disease Prediction System
             </h1>
             <div class="flex mb-4">
               <a

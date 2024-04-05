@@ -1,0 +1,4 @@
+npx tailwindcss -i ./static/src/input.css -o ./static/dist/css/output.css --watch
+
+Recommendation - Upto 22 Crops. (Started with 7 Crops)
+Disease Prediction - Upto 27 Diseases under 11 Crops. (Started with 3 Crops)

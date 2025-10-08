@@ -213,7 +213,7 @@ def fetch_details(crop, disease):
 
 
 def capture_image():
-    cap = cv2.VideoCapture(3, cv2.CAP_DSHOW)
+    cap = cv2.VideoCapture(1, cv2.CAP_DSHOW)
     ret, frame = cap.read()
     cap.release()
     frame_resized = cv2.resize(frame, (256, 256))
@@ -236,7 +236,7 @@ def video_feed():
 
 
 def generate_frames():
-    camera = cv2.VideoCapture(3, cv2.CAP_DSHOW)
+    camera = cv2.VideoCapture(1, cv2.CAP_DSHOW)
     while True:
         success, frame = camera.read()
         if not success:

@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,300;1,14..32,300&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="{{ url_for('static', filename='dist/css/output.css') }}" />
+  <link rel="stylesheet" href="{{url_for('static', filename='dist/css/output.css')}}" />
   <link rel="shortcut icon" href="{{url_for('static', filename='Circle Logo.png')}}" type="image/x-icon" />
   <title>FarmGenie - Cultivating Success</title>
   <style>
@@ -120,6 +120,7 @@
     </nav>
   </header>
   <hr />
+  
   <form method="POST" action="/crop-recommendation-system" class="text-gray-600 body-font relative">
     <div class="container px-5 py-10 mx-auto">
       <div class="flex flex-col text-center w-full mb-12">
@@ -133,35 +134,42 @@
       </div>
       <div class="lg:w-1/2 md:w-2/3 mx-auto">
         <div class="flex flex-wrap -m-2">
+          <div class="p-2 w-full">
+            <div class="relative">
+              <label for="zipcode" class="leading-7 text-sm text-gray-600" id="label_for_zipcode">Zipcode (Enter your zip code and press ENTER) </label>
+              <input type="number" id="zipcode" name="zipcode"
+                class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-yellow-500 focus:bg-white focus:ring-2 focus:ring-yellow-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" required/>
+            </div>
+          </div>
           <div class="p-2 w-1/2">
             <div class="relative">
               <label for="nRatio" class="leading-7 text-sm text-gray-600">Nitrogen Ratio (kg/ha)</label>
               <input type="number" id="nRatio" name="nRatio"
-                class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-yellow-500 focus:bg-white focus:ring-2 focus:ring-yellow-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
+                class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-yellow-500 focus:bg-white focus:ring-2 focus:ring-yellow-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" required/>
             </div>
           </div>
           <div class="p-2 w-1/2">
             <div class="relative">
               <label for="pRatio" class="leading-7 text-sm text-gray-600">Phosphorous Ratio (kg/ha)</label>
               <input type="number" id="pRatio" name="pRatio"
-                class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-yellow-500 focus:bg-white focus:ring-2 focus:ring-yellow-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
+                class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-yellow-500 focus:bg-white focus:ring-2 focus:ring-yellow-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" required/>
             </div>
           </div>
           <div class="p-2 w-1/2">
             <div class="relative">
               <label for="kRatio" class="leading-7 text-sm text-gray-600">Potassium Ratio (kg/ha)</label>
               <input type="number" id="kRatio" name="kRatio"
-                class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-yellow-500 focus:bg-white focus:ring-2 focus:ring-yellow-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
+                class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-yellow-500 focus:bg-white focus:ring-2 focus:ring-yellow-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" required/>
             </div>
           </div>
-          <div class="p-2 w-1/2">
+          <div class="p-2 w-1/2" hidden>
             <div class="relative">
               <label for="temp" class="leading-7 text-sm text-gray-600">Temperature (°C)</label>
               <input type="number" id="temp" name="temp"
                 class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-yellow-500 focus:bg-white focus:ring-2 focus:ring-yellow-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
             </div>
           </div>
-          <div class="p-2 w-1/2">
+          <div class="p-2 w-1/2" hidden>
             <div class="relative">
               <label for="humidity" class="leading-7 text-sm text-gray-600">Humidity (%)</label>
               <input type="number" id="humidity" name="humidity"
@@ -175,14 +183,13 @@
                 class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-yellow-500 focus:bg-white focus:ring-2 focus:ring-yellow-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
             </div>
           </div>
-          <div class="p-2 w-full">
+          <div class="p-2 w-full" hidden>
             <div class="relative">
               <label for="rainfall" class="leading-7 text-sm text-gray-600">Rainfall (mm)</label>
               <input type="number" id="rainfall" name="rainfall"
                 class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-yellow-500 focus:bg-white focus:ring-2 focus:ring-yellow-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
             </div>
           </div>
-
           <div class="p-2 w-full">
             <button type="submit"
               class="flex mx-auto text-white bg-yellow-500 border-0 py-2 px-8 focus:outline-none hover:bg-yellow-600 rounded text-lg">
@@ -425,6 +432,7 @@
     }
   </script>
   <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+  <script src="{{url_for('static', filename='dist/js/script.js')}}"></script>
 </body>
 
 </html>

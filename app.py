@@ -1,4 +1,4 @@
-from flask import Flask, request, render_template, Response
+from flask import Flask, request, render_template, Response, jsonify
 import pickle
 import pandas
 import torch
@@ -12,6 +12,12 @@ import cv2
 import io
 from werkzeug.datastructures import FileStorage
 import tempfile
+import ee
+
+ee.Authenticate()
+ee.Initialize(project='farmgenie-475018')
+
+soil_ph = ee.Image('projects/soilgrids-isric/phh2o_mean').select('phh2o_100-200cm_mean')
 
 with open("model.pkl", "rb") as file:
     model2 = pickle.load(file)
@@ -161,6 +167,30 @@ model.eval()
 @app.route("/")
 def index():
     return render_template("index.html")
+
+@app.route("/get-soilpH", methods=["POST", "GET"])
+def getsoilph():
+    if request.method == "POST":
+        lat = request.json.get("lat")
+        lon = request.json.get("lon")
+        point = ee.Geometry.Point([float(lat), float(lon)])
+
+        ph_data = soil_ph.reduceRegion(
+            reducer=ee.Reducer.first(),
+            geometry=point,
+            scale=250
+        ).getInfo()
+
+        raw_ph_value = ph_data.get("phh2o_100-200cm_mean")
+
+        if raw_ph_value is not None:
+            # Calculate actual pH (value is scaled by 10)
+            actual_ph = raw_ph_value / 10
+            print(f"Actual Soil pH (100-200cm) at this point: {actual_ph:.2f}")
+            return jsonify([{"Soilph": actual_ph,   "status": "success"}])
+        else:
+            # If the value is None, print a clear error message
+            return jsonify([{"Soilph": "error in fetching soil data",   "status": "success"}])
 
 
 @app.route("/crop-recommendation-system", methods=["POST", "GET"])

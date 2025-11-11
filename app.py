@@ -1,4 +1,9 @@
-from flask import Flask, request, render_template, Response, jsonify
+from flask import Flask, request, render_template, Response, jsonify, session, make_response, redirect, abort
+import jwt
+import datetime
+import bcrypt
+import random
+from user_agents import parse
 import pickle
 import pandas
 import torch
@@ -13,11 +18,25 @@ import io
 from werkzeug.datastructures import FileStorage
 import tempfile
 import ee
+from pymongo.mongo_client import MongoClient
+from pymongo.server_api import ServerApi
 
 ee.Authenticate()
 ee.Initialize(project='dark-yen-474211-d5')
 
+salt = bcrypt.gensalt()
+SECRET_KEY = "FarmGenieCS"
+
 soil_ph = ee.Image('projects/soilgrids-isric/phh2o_mean').select('phh2o_100-200cm_mean')
+
+uri = "mongodb+srv://Devankit:fReBRuCBpy2cpugR@cluster0.hr3vbhq.mongodb.net/?appName=Cluster0"
+
+client = MongoClient(uri, server_api=ServerApi('1'))
+
+db = client.user
+
+signinData = db["Usersignins"]
+sessData = db["Sessiondata"]
 
 with open("model.pkl", "rb") as file:
     model2 = pickle.load(file)
@@ -163,10 +182,170 @@ model.load_state_dict(
 )
 model.eval()
 
+@app.route('/<path:page>')
+def handle_page(page):
+    excluded_page = ["dashboard", "crop-disease-prediction-system", "crop-disease-prediction-system-2", "login", "register", "logout", "video_feed", "crop-recommendation-system", ""]
+    if request.method == "GET" and page not in excluded_page:
+        access_token = request.cookies.get('access_token')
+
+        if not access_token:
+            refresh_token = request.cookies.get('refresh_token')
+            if refresh_token:
+                data = jwt.decode(refresh_token, SECRET_KEY, algorithms=["HS256"])
+                sessiId = data["sessionid"]
+                
+                sess = sessData.find_one({"sessionid": sessiId})
+                if not sess:
+                    return redirect("/")
+                user = signinData.find_one({"uid": sess["uid"]})
+
+                payloadforat = {
+                    "user_id": user["uid"],
+                    "email": user["Email"],
+                    "fname": user["First Name"],
+                    "lname": user["Last Name"],
+                    "pincode": user["Zipcode"],
+                    "mobile": user["Mobile"],
+                    "sessionid": data["sessionid"],
+                    "exp": datetime.datetime.utcnow() + datetime.timedelta(minutes=15)
+                }
+
+                access_token = jwt.encode(payloadforat, SECRET_KEY, algorithm="HS256")
+            else:
+                return redirect("/")
+        data = jwt.decode(access_token, SECRET_KEY, algorithms=["HS256"])
+        return render_template(page+".html", title=page, data=data)
+    else:
+        abort(404)
+
+@app.route("/dashboard")
+def dashboard():
+    access_token = request.cookies.get('access_token')
+
+    if not access_token:
+        refresh_token = request.cookies.get('refresh_token')
+        if refresh_token:
+            data = jwt.decode(refresh_token, SECRET_KEY, algorithms=["HS256"])
+            sessiId = data["sessionid"]
+                
+            sess = sessData.find_one({"sessionid": sessiId})
+            if not sess:
+                return redirect("/")
+            user = signinData.find_one({"uid": sess["uid"]})
+
+            payloadforat = {
+                "user_id": user["uid"],
+                "email": user["Email"],
+                "fname": user["First Name"],
+                "lname": user["Last Name"],
+                "pincode": user["Zipcode"],
+                "mobile": user["Mobile"],
+                "sessionid": data["sessionid"],
+                "exp": datetime.datetime.utcnow() + datetime.timedelta(minutes=1)
+            }
+
+            access_token = jwt.encode(payloadforat, SECRET_KEY, algorithm="HS256")
+        else:
+            return redirect("/")
+    data = jwt.decode(access_token, SECRET_KEY, algorithms=["HS256"])
+    return render_template("customer-dashboard.html",data=data)
+
+@app.route("/logged_in_devices")
+def show_logged_devices():
+    access_token = request.cookies.get('access_token')
+
+    if not access_token:
+        refresh_token = request.cookies.get('refresh_token')
+        if refresh_token:
+            data = jwt.decode(refresh_token, SECRET_KEY, algorithms=["HS256"])
+            sessiId = data["sessionid"]
+                
+            sess = sessData.find_one({"sessionid": sessiId})
+            if not sess:
+                return redirect("/")
+            user = signinData.find_one({"uid": sess["uid"]})
+
+            payloadforat = {
+                "user_id": user["uid"],
+                "email": user["Email"],
+                "fname": user["First Name"],
+                "lname": user["Last Name"],
+                "pincode": user["Zipcode"],
+                "mobile": user["Mobile"],
+                "sessionid": data["sessionid"],
+                "exp": datetime.datetime.utcnow() + datetime.timedelta(minutes=1)
+            }
+
+            access_token = jwt.encode(payloadforat, SECRET_KEY, algorithm="HS256")
+        else:
+            return redirect("/")
+    data = jwt.decode(access_token, SECRET_KEY, algorithms=["HS256"])
+    datasa = sessData.find({"uid": data["user_id"]})
+    datas = []
+    for dat in datasa:
+        user_agent_string = dat['useragent']
+        user_agent = parse(user_agent_string)
+        payload = {
+            "sessionID": dat['sessionid'],
+            "browser": user_agent.browser.family, 
+            "bversion": user_agent.browser.version_string,
+            "OS": user_agent.os.family,
+            "OSversion": user_agent.os.version_string,
+            "device": "Mobile" if user_agent.is_mobile else "Tablet" if user_agent.is_tablet else "PC",
+            "ip": dat['ip']
+        }
+        datas.append(payload)
+    return render_template("logged_in_devices.html",datas=datas, data=data)
+
+@app.route("/logout", defaults={"sessionID": None})
+@app.route("/logout/<int:sessionID>")
+def logout(sessionID):
+    if not sessionID:
+        refresh_token = request.cookies.get('refresh_token')
+        data = jwt.decode(refresh_token, SECRET_KEY, algorithms=["HS256"])
+        sessiId = data["sessionid"]
+        sessData.delete_one({"sessionid": sessiId})
+
+        resp = make_response(redirect("/"))
+        resp.delete_cookie('access_token')
+        resp.delete_cookie('refresh_token')
+        return resp
+    else:
+        sessData.delete_one({"sessionid": sessionID})
+        return redirect("/logged_in_devices")
 
 @app.route("/")
 def index():
-    return render_template("index.html")
+    access_token = request.cookies.get('access_token')
+
+    if not access_token:
+        refresh_token = request.cookies.get('refresh_token')
+        if refresh_token:
+            data = jwt.decode(refresh_token, SECRET_KEY, algorithms=["HS256"])
+            sessiId = data["sessionid"]
+            
+            sess = sessData.find_one({"sessionid": sessiId})
+            if not sess:
+                return render_template("index.html")
+            user = signinData.find_one({"uid": sess["uid"]})
+
+            payloadforat = {
+                "user_id": user["uid"],
+                "email": user["Email"],
+                "fname": user["First Name"],
+                "lname": user["Last Name"],
+                "pincode": user["Zipcode"],
+                "mobile": user["Mobile"],
+                "sessionid": data["sessionid"],
+                "exp": datetime.datetime.utcnow() + datetime.timedelta(minutes=1)
+            }
+
+            access_token = jwt.encode(payloadforat, SECRET_KEY, algorithm="HS256")
+        else:
+            return render_template("index.html")
+
+    data = jwt.decode(access_token, SECRET_KEY, algorithms=["HS256"])
+    return render_template("index.html", data = data)
 
 @app.route("/get-soilpH", methods=["POST", "GET"])
 def getsoilph():
@@ -192,6 +371,97 @@ def getsoilph():
             # If the value is None, print a clear error message
             return jsonify([{"Soilph": "error in fetching soil data",   "status": "success"}])
 
+@app.route("/register", methods=["POST", "GET"])
+def register():
+    if request.method == "GET":
+        return render_template("register.html", alert=[""])
+    if request.method == "POST":
+        fname = request.form["fname"]
+        lname = request.form["lname"]
+        email = request.form["email"]
+        mobile = request.form["mobile"]
+        zipcode = request.form["zipcode"]
+        address = request.form["address"]
+        city = request.form["city"]
+        district = request.form["district"]
+        state = request.form["state"]
+        country = request.form["country"]
+        password = request.form["password"]
+        cpassword = request.form["cpassword"]
+
+        user = signinData.find_one({"Email": email})
+
+        if user:
+            return render_template("register.html", alert=["Account with that email already exists"])
+        
+        if password != cpassword:
+            return render_template("register.html", alert=["Passwords do not match"])
+        
+        uid = random.randint(100000, 999999)
+        password = password.encode("UTF-8")
+        hashed_password = bcrypt.hashpw(password, salt)
+        signinData.insert_one({"uid": uid ,"First Name": fname, "Last Name": lname, "Email": email, "Mobile": mobile, "Zipcode": zipcode, "Address": address, "City": city, "District": district, "State": state, "Country": country, "Password": hashed_password})
+        return redirect("/login")
+    
+@app.route("/login", methods=["POST", "GET"])
+def login():
+    if request.method == "GET":
+        return render_template("login.html", alert=[""])
+    if request.method == "POST":
+        email = request.form["email"]
+        password = request.form["password"]
+
+        user = signinData.find_one({"Email": email})
+
+        if user:
+            stored_pass = user["Password"]
+            password = password.encode("UTF-8")
+
+            if bcrypt.checkpw(password, stored_pass):
+                session_id = random.randint(1000000000, 9999999999)
+                ip_address = request.headers.get('X-Forwarded-For', request.remote_addr)
+
+                if ',' in ip_address:
+                    ip_address = ip_address.split(',')[0].strip()
+
+                payloadforat = {
+                    "user_id": user["uid"],
+                    "email": user["Email"],
+                    "fname": user["First Name"],
+                    "lname": user["Last Name"],
+                    "pincode": user["Zipcode"],
+                    "mobile": user["Mobile"],
+                    "sessionid": session_id,
+                    "exp": datetime.datetime.utcnow() + datetime.timedelta(minutes=1)
+                }
+                payloadforrt = {
+                    "ip": ip_address,
+                    "useragent": request.headers.get('User-Agent'),
+                    "sessionid": session_id,
+                    "exp": datetime.datetime.utcnow() + datetime.timedelta(seconds=3600*24*30*6)
+                }
+
+
+                Atoken = jwt.encode(payloadforat, SECRET_KEY, algorithm="HS256")
+                Rtoken = jwt.encode(payloadforrt, SECRET_KEY, algorithm="HS256")
+
+                sessData.insert_one({
+                    "ip": ip_address,
+                    "useragent": request.headers.get('User-Agent'),
+                    "sessionid": session_id,
+                    "uid": user["uid"],
+                    "exp": datetime.datetime.utcnow() + datetime.timedelta(seconds=3600*24*30*6),
+                    "refresh_token": Rtoken
+                })
+
+                resp = make_response(redirect("/"))
+                resp.set_cookie('access_token', Atoken, max_age=900)
+                resp.set_cookie('refresh_token', Rtoken, max_age=3600*24*30*6)
+                return resp
+            else:
+                return render_template("login.html", alert=["Invalid Email or Password"])
+        else:
+            return render_template("login.html", alert=["Invalid Email or Password"])
 
 @app.route("/crop-recommendation-system", methods=["POST", "GET"])
 def desiredCrop():
@@ -347,7 +617,6 @@ def disease_prediction_2():
 
         return render_template("disease-pred-2.html", details=details)
     return render_template("disease-pred-2.html", details="")
-
 
 if __name__ == "__main__":
     app.run(debug=True, port=5001, host="0.0.0.0")

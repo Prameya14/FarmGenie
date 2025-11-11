@@ -78,6 +78,10 @@
                 class="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700">Sustainability</a>
             </li>
             <li>
+              <a href="/#pricing"
+                class="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700">Pricing</a>
+            </li>
+            <li>
               <a href="/#future"
                 class="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700">Future</a>
             </li>
@@ -86,7 +90,7 @@
                 class="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700">Team</a>
             </li>
             <li>
-              <button id="dropdownNavbarLink" data-dropdown-toggle="dropdownNavbar"
+              <button id="dropdownNavbarLink" data-dropdown-toggle="dropdownNavbar2"
                 class="flex items-center justify-between w-full py-2 px-3 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-primary-700 md:p-0 md:w-auto dark:text-gray-400 dark:hover:text-white dark:focus:text-white dark:border-gray-700 dark:hover:bg-gray-700 md:dark:hover:bg-transparent">Products
                 <svg class="w-2.5 h-2.5 ms-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
                   viewBox="0 0 10 6">
@@ -94,7 +98,7 @@
                     d="m1 1 4 4 4-4" />
                 </svg></button>
               <!-- Dropdown menu -->
-              <div id="dropdownNavbar"
+              <div id="dropdownNavbar2"
                 class="z-10 hidden font-normal bg-white divide-y divide-gray-100 rounded-lg shadow w-64 dark:bg-gray-700 dark:divide-gray-600">
                 <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownLargeButton">
                   <li>
@@ -111,6 +115,40 @@
                     <a href="/crop-disease-prediction-system-2"
                       class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Disease
                       Prediction from Image</a>
+                  </li>
+                </ul>
+              </div>
+            </li>
+            <li {%if data %}hidden{% endif %}>
+              <a href="/register"
+                class="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700">Get started</a>
+            </li>
+            <li {%if not data %}hidden{% endif %}>
+              <button id="dropdownNavbarLink1" data-dropdown-toggle="dropdownNavbar1"
+                class="flex items-center justify-between w-full py-2 px-3 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-primary-700 md:p-0 md:w-auto dark:text-gray-400 dark:hover:text-white dark:focus:text-white dark:border-gray-700 dark:hover:bg-gray-700 md:dark:hover:bg-transparent"><img style="width: 30px; height: 30px; border-radius: 30px;" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTnSA1zygA3rubv-VK0DrVcQ02Po79kJhXo_A&s" alt=""> {%if data %} {{ data["fname"] }} {% endif %}
+                <svg class="w-2.5 h-2.5 ms-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                  viewBox="0 0 10 6">
+                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="m1 1 4 4 4-4" />
+                </svg></button>
+              <!-- Dropdown menu -->
+              <div id="dropdownNavbar1"
+                class="z-10 hidden font-normal bg-white divide-y divide-gray-100 rounded-lg shadow w-64 dark:bg-gray-700 dark:divide-gray-600">
+                <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownLargeButton">
+                  <li>
+                    <a href="/dashboard"
+                      class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
+                      My Account</a>
+                  </li>
+                  <li>
+                    <a href="/crop-disease-prediction-system"
+                      class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
+                      Billing</a>
+                  </li>
+                  <li>
+                    <a href="/logout"
+                      class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
+                      Logout</a>
                   </li>
                 </ul>
               </div>
@@ -336,6 +374,206 @@
             <a target="_blank" href="https://sdgs.un.org/goals/goal2"
               class="inline-flex items-center font-medium text-primary-600 dark:text-primary-500 hover:underline">
               Read more
+              <svg class="ml-2 w-4 h-4" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd"
+                  d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
+                  clip-rule="evenodd"></path>
+              </svg>
+            </a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+  <hr />
+  <section id="pricing" class="text-gray-600 body-font">
+    <div class="container px-5 py-12 mx-auto flex flex-wrap">
+      <div class="flex flex-wrap w-full mb-20">
+        <div class="lg:w-1/2 w-full mb-6 lg:mb-0">
+          <h2 class="mb-4 text-3xl lg:text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white">Pricing
+          </h2>
+          <div class="h-1 w-20 bg-yellow-500 rounded"></div>
+        </div>
+        <p class="lg:w-1/2 w-full leading-relaxed text-gray-500">
+          Our project adopts a freemium model, allowing users to access core 
+          features at no cost while offering premium upgrades for advanced 
+          functionalities and enhanced performance. This approach encourages 
+          widespread adoption by lowering entry barriers, while premium subscriptions 
+          support ongoing innovation, maintenance, and the introduction of 
+          cutting-edge features to deliver greater value for power users.
+        </p>
+      </div>
+      <div class="grid gap-8 lg:grid-cols-2">
+        <article class="p-6 bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
+          <div class="flex justify-between items-center mb-5 text-gray-500">
+            <span
+              class="bg-primary-100 text-primary-800 text-xs font-medium inline-flex items-center px-2.5 py-0.5 rounded dark:bg-primary-200 dark:text-primary-800">
+              <svg class="mr-1 w-3 h-3" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd"
+                  d="M2 5a2 2 0 012-2h8a2 2 0 012 2v10a2 2 0 002 2H4a2 2 0 01-2-2V5zm3 1h6v4H5V6zm6 6H5v2h6v-2z"
+                  clip-rule="evenodd"></path>
+                <path d="M15 7h1a2 2 0 012 2v5.5a1.5 1.5 0 01-3 0V7z"></path>
+              </svg>
+              Genie sprout
+            </span>
+            <span class="text-sm">Students, small farms, and early testers</span>
+          </div>
+          <h2 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">₹0</h2>
+          <p class="mb-5 font-light text-gray-500 dark:text-gray-400">
+            <ul>
+              <li>- Weather insights (temp, humidity, rainfall estimate)</li>
+              <li>- Soil type suggestions (manual input)</li>
+              <li>- AI crop recommendation (limited queries)</li>
+              <li>- 5 free AI reports/month</li>
+              <li>- Access to community help</li>
+            </ul>
+          </p>
+          <div class="flex justify-between items-center">
+            <!-- <div class="flex items-center space-x-4">
+              <img class="w-7 h-7 rounded-full" src="{{ url_for('static', filename='img/sdgs.png') }}"
+                alt="Bonnie Green avatar" />
+              <span class="font-medium dark:text-white">
+                UN SDG's
+              </span>
+            </div> -->
+            <a target="_blank" href="https://sdgs.un.org/goals/goal12"
+              class="inline-flex items-center font-medium text-primary-600 dark:text-primary-500 hover:underline" style="margin-top: 10px;">
+              Check Out
+              <svg class="ml-2 w-4 h-4" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd"
+                  d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
+                  clip-rule="evenodd"></path>
+              </svg>
+            </a>
+          </div>
+        </article>
+        <article class="p-6 bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
+          <div class="flex justify-between items-center mb-5 text-gray-500">
+            <span
+              class="bg-primary-100 text-primary-800 text-xs font-medium inline-flex items-center px-2.5 py-0.5 rounded dark:bg-primary-200 dark:text-primary-800">
+              <svg class="mr-1 w-3 h-3" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd"
+                  d="M2 5a2 2 0 012-2h8a2 2 0 012 2v10a2 2 0 002 2H4a2 2 0 01-2-2V5zm3 1h6v4H5V6zm6 6H5v2h6v-2z"
+                  clip-rule="evenodd"></path>
+                <path d="M15 7h1a2 2 0 012 2v5.5a1.5 1.5 0 01-3 0V7z"></path>
+              </svg>
+              Genie Grow
+            </span>
+            <span class="text-sm">Small to medium farms</span>
+          </div>
+          <h2 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">₹299/month</h2>
+          <p class="mb-5 font-light text-gray-500 dark:text-gray-400">
+            <ul>
+              <li>- All Sprout features</li>
+              <li>- Automatic rainfall & soil prediction (via APIs)</li>
+              <li>- Pest & disease detection (AI-based)</li>
+              <li>- Crop health visualization dashboard</li>
+              <li>- 30 AI reports/month</li>
+              <li>- Priority support</li>
+            </ul>
+          </p>
+          <div class="flex justify-between items-center">
+            <!-- <div class="flex items-center space-x-4">
+              <img class="w-7 h-7 rounded-full" src="{{ url_for('static', filename='img/sdgs.png') }}"
+                alt="Bonnie Green avatar" />
+              <span class="font-medium dark:text-white">
+                UN SDG's
+              </span>
+            </div> -->
+            <a target="_blank" href="https://sdgs.un.org/goals/goal2"
+              class="inline-flex items-center font-medium text-primary-600 dark:text-primary-500 hover:underline" style="margin-top: 10px;">
+              Check out
+              <svg class="ml-2 w-4 h-4" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd"
+                  d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
+                  clip-rule="evenodd"></path>
+              </svg>
+            </a>
+          </div>
+        </article>
+        <article class="p-6 bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
+          <div class="flex justify-between items-center mb-5 text-gray-500">
+            <span
+              class="bg-primary-100 text-primary-800 text-xs font-medium inline-flex items-center px-2.5 py-0.5 rounded dark:bg-primary-200 dark:text-primary-800">
+              <svg class="mr-1 w-3 h-3" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd"
+                  d="M2 5a2 2 0 012-2h8a2 2 0 012 2v10a2 2 0 002 2H4a2 2 0 01-2-2V5zm3 1h6v4H5V6zm6 6H5v2h6v-2z"
+                  clip-rule="evenodd"></path>
+                <path d="M15 7h1a2 2 0 012 2v5.5a1.5 1.5 0 01-3 0V7z"></path>
+              </svg>
+              Genie Prime
+            </span>
+            <span class="text-sm">Agricultural startups, agronomists & research projects</span>
+          </div>
+          <h2 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">₹799/month</h2>
+          <p class="mb-5 font-light text-gray-500 dark:text-gray-400">
+            <ul>
+              <li>- All Grow features</li>
+              <li>- Yield Forecasting (AI-powered)</li>
+              <li>- Multi field management</li>
+              <li>- Data Export(CSV, JSON)</li>
+              <li>- Custom AI alerts (Rainfall, pest risk, etc)</li>
+              <li>- 100 AI reports/month</li>
+              <li>- Email and Whatsapp support</li>
+            </ul>
+          </p>
+          <div class="flex justify-between items-center">
+            <!-- <div class="flex items-center space-x-4">
+              <img class="w-7 h-7 rounded-full" src="{{ url_for('static', filename='img/sdgs.png') }}"
+                alt="Bonnie Green avatar" />
+              <span class="font-medium dark:text-white">
+                UN SDG's
+              </span>
+            </div> -->
+            <a target="_blank" href="https://sdgs.un.org/goals/goal2"
+              class="inline-flex items-center font-medium text-primary-600 dark:text-primary-500 hover:underline" style="margin-top: 10px;">
+              Check out
+              <svg class="ml-2 w-4 h-4" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd"
+                  d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
+                  clip-rule="evenodd"></path>
+              </svg>
+            </a>
+          </div>
+        </article>
+        <article class="p-6 bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
+          <div class="flex justify-between items-center mb-5 text-gray-500">
+            <span
+              class="bg-primary-100 text-primary-800 text-xs font-medium inline-flex items-center px-2.5 py-0.5 rounded dark:bg-primary-200 dark:text-primary-800">
+              <svg class="mr-1 w-3 h-3" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd"
+                  d="M2 5a2 2 0 012-2h8a2 2 0 012 2v10a2 2 0 002 2H4a2 2 0 01-2-2V5zm3 1h6v4H5V6zm6 6H5v2h6v-2z"
+                  clip-rule="evenodd"></path>
+                <path d="M15 7h1a2 2 0 012 2v5.5a1.5 1.5 0 01-3 0V7z"></path>
+              </svg>
+              Genie Infinity
+            </span>
+            <span class="text-sm">Governments, universities, large-scale organizations</span>
+          </div>
+          <h2 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Starts from ₹7999/month
+          </h2>
+          <p class="mb-5 font-light text-gray-500 dark:text-gray-400">
+            <ul>
+              <li>- All Prime features</li>
+              <li>- API access for integration</li>
+              <li>- CUstom AI model training on local data</li>
+              <li>- eeam collaboration tools</li>
+              <li>- Custom AI alerts (Rainfall, pest risk, etc)</li>
+              <li>- 24/7 dedicated engineer support</li>
+              <li>- Branding and white-label option</li>
+            </ul>
+          </p>
+          <div class="flex justify-between items-center">
+            <!-- <div class="flex items-center space-x-4">
+              <img class="w-7 h-7 rounded-full" src="{{ url_for('static', filename='img/sdgs.png') }}"
+                alt="Bonnie Green avatar" />
+              <span class="font-medium dark:text-white">
+                UN SDG's
+              </span>
+            </div> -->
+            <a target="_blank" href="https://sdgs.un.org/goals/goal2"
+              class="inline-flex items-center font-medium text-primary-600 dark:text-primary-500 hover:underline" style="margin-top: 10px;">
+              Talk to B2B support to negotiate
               <svg class="ml-2 w-4 h-4" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                 <path fill-rule="evenodd"
                   d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
@@ -1005,12 +1243,20 @@ l-39 -20 0 43 c0 38 5 57 16 57 2 0 19 -9 38 -21z" />
     };
   </script>
   <script type="text/javascript">
+    // const goog_te_gadget = document.querySelector(".goog-te-gadget");
+    
+    
+
     function googleTranslateElementInit() {
       new google.translate.TranslateElement(
         { pageLanguage: 'en', includedLanguages: 'en,hi,or', layout: google.translate.TranslateElement.InlineLayout.SIMPLE },
         'google_translate_element'
       );
     }
+    document.getElementById("google_translate_element").addEventListener("click", () => {
+      
+    })
+    document.querySelector(".goog-te-gadget-icon").style.hidden = true
   </script>
   <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 </body>

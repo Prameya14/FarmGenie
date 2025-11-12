@@ -241,7 +241,7 @@ def dashboard():
                 "pincode": user["Zipcode"],
                 "mobile": user["Mobile"],
                 "sessionid": data["sessionid"],
-                "exp": datetime.datetime.utcnow() + datetime.timedelta(minutes=1)
+                "exp": datetime.datetime.utcnow() + datetime.timedelta(minutes=15)
             }
 
             access_token = jwt.encode(payloadforat, SECRET_KEY, algorithm="HS256")
@@ -273,7 +273,7 @@ def show_logged_devices():
                 "pincode": user["Zipcode"],
                 "mobile": user["Mobile"],
                 "sessionid": data["sessionid"],
-                "exp": datetime.datetime.utcnow() + datetime.timedelta(minutes=1)
+                "exp": datetime.datetime.utcnow() + datetime.timedelta(minutes=15)
             }
 
             access_token = jwt.encode(payloadforat, SECRET_KEY, algorithm="HS256")
@@ -337,7 +337,7 @@ def index():
                 "pincode": user["Zipcode"],
                 "mobile": user["Mobile"],
                 "sessionid": data["sessionid"],
-                "exp": datetime.datetime.utcnow() + datetime.timedelta(minutes=1)
+                "exp": datetime.datetime.utcnow() + datetime.timedelta(minutes=15)
             }
 
             access_token = jwt.encode(payloadforat, SECRET_KEY, algorithm="HS256")

@@ -37,6 +37,7 @@ db = client.user
 
 signinData = db["Usersignins"]
 sessData = db["Sessiondata"]
+condata = db["ContactData"]
 
 with open("model.pkl", "rb") as file:
     model2 = pickle.load(file)
@@ -207,7 +208,7 @@ def handle_page(page):
                     "pincode": user["Zipcode"],
                     "mobile": user["Mobile"],
                     "sessionid": data["sessionid"],
-                    "exp": datetime.datetime.utcnow() + datetime.timedelta(minutes=15)
+                    "exp": datetime.datetime.utcnow() + datetime.timedelta(hours=15)
                 }
 
                 access_token = jwt.encode(payloadforat, SECRET_KEY, algorithm="HS256")
@@ -218,6 +219,28 @@ def handle_page(page):
     else:
         abort(404)
 
+@app.route("/support")
+def support():
+    if request.method == "POST":
+        name = request.form["name"]
+        email = request.form["email"]
+        message = request.form["message"]
+
+        condata.insert_one({"name": name, "email": email, "message": message})
+
+        return render_template("customer-support.html",dat="Your response had been recorded") 
+        
+@app.route("/expert")
+def expert():
+    if request.method == "POST":
+        name = request.form["name"]
+        mobile = request.form["mobile"]
+        message = request.form["message"]
+
+        condata.insert_one({"name": name, "mobile": mobile, "message": message})
+
+        return render_template("talk_to_expert.html",dat="Your response had been recorded. Call on this number 8047359131")
+        
 @app.route("/dashboard")
 def dashboard():
     access_token = request.cookies.get('access_token')
@@ -241,7 +264,7 @@ def dashboard():
                 "pincode": user["Zipcode"],
                 "mobile": user["Mobile"],
                 "sessionid": data["sessionid"],
-                "exp": datetime.datetime.utcnow() + datetime.timedelta(minutes=15)
+                "exp": datetime.datetime.utcnow() + datetime.timedelta(hours=15)
             }
 
             access_token = jwt.encode(payloadforat, SECRET_KEY, algorithm="HS256")
@@ -273,7 +296,7 @@ def show_logged_devices():
                 "pincode": user["Zipcode"],
                 "mobile": user["Mobile"],
                 "sessionid": data["sessionid"],
-                "exp": datetime.datetime.utcnow() + datetime.timedelta(minutes=15)
+                "exp": datetime.datetime.utcnow() + datetime.timedelta(hours=15)
             }
 
             access_token = jwt.encode(payloadforat, SECRET_KEY, algorithm="HS256")
@@ -337,7 +360,7 @@ def index():
                 "pincode": user["Zipcode"],
                 "mobile": user["Mobile"],
                 "sessionid": data["sessionid"],
-                "exp": datetime.datetime.utcnow() + datetime.timedelta(minutes=15)
+                "exp": datetime.datetime.utcnow() + datetime.timedelta(hours=15)
             }
 
             access_token = jwt.encode(payloadforat, SECRET_KEY, algorithm="HS256")
@@ -432,7 +455,7 @@ def login():
                     "pincode": user["Zipcode"],
                     "mobile": user["Mobile"],
                     "sessionid": session_id,
-                    "exp": datetime.datetime.utcnow() + datetime.timedelta(minutes=1)
+                    "exp": datetime.datetime.utcnow() + datetime.timedelta(hours=1)
                 }
                 payloadforrt = {
                     "ip": ip_address,

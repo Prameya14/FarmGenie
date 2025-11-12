@@ -87,3 +87,4 @@ const showlocation = async (pos) => {
 }
 
 Userlocation.getCurrentPosition(showlocation);
+

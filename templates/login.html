@@ -7,8 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,300;1,14..32,300&display=swap"
-    rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,300;1,14..32,300&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="{{url_for('static', filename='dist/css/output.css')}}" />
   <link rel="shortcut icon" href="{{url_for('static', filename='Circle Logo.png')}}" type="image/x-icon" />
   <title>FarmGenie - Cultivating Success</title>
@@ -66,6 +65,10 @@
                 class="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700">Home</a>
             </li>
             <li>
+              <a href="/#about"
+                class="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700">About</a>
+            </li>
+            <li>
               <a href="/#features"
                 class="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700">Features</a>
             </li>
@@ -82,7 +85,7 @@
                 class="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700">Team</a>
             </li>
             <li>
-              <button id="dropdownNavbarLink" data-dropdown-toggle="dropdownNavbar2"
+              <button id="dropdownNavbarLink" data-dropdown-toggle="dropdownNavbar"
                 class="flex items-center justify-between w-full py-2 px-3 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-primary-700 md:p-0 md:w-auto dark:text-gray-400 dark:hover:text-white dark:focus:text-white dark:border-gray-700 dark:hover:bg-gray-700 md:dark:hover:bg-transparent">Products
                 <svg class="w-2.5 h-2.5 ms-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
                   viewBox="0 0 10 6">
@@ -90,7 +93,7 @@
                     d="m1 1 4 4 4-4" />
                 </svg></button>
               <!-- Dropdown menu -->
-              <div id="dropdownNavbar2"
+              <div id="dropdownNavbar"
                 class="z-10 hidden font-normal bg-white divide-y divide-gray-100 rounded-lg shadow w-64 dark:bg-gray-700 dark:divide-gray-600">
                 <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownLargeButton">
                   <li>
@@ -111,137 +114,49 @@
                 </ul>
               </div>
             </li>
-            <li {%if data %}hidden{% endif %}>
-              <a href="/login"
-                class="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700 font-semibold">Login</a>
-            </li>
-            <li {%if data %}hidden{% endif %}>
-              <a href="/register"
-                class="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700 font-semibold">Register</a>
-            </li>
-            <li {%if not data %}hidden{% endif %}>
-              <button id="dropdownNavbarLink1" data-dropdown-toggle="dropdownNavbar1"
-                class="flex items-center justify-between w-full py-2 px-3 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-primary-700 md:p-0 md:w-auto dark:text-gray-400 dark:hover:text-white dark:focus:text-white dark:border-gray-700 dark:hover:bg-gray-700 md:dark:hover:bg-transparent"><img
-                  style="width: 30px; height: 30px; border-radius: 30px;"
-                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTnSA1zygA3rubv-VK0DrVcQ02Po79kJhXo_A&s"
-                  alt=""> <span class="ml-3">{%if data %} {{ data["fname"] }} {% endif %}</span>
-                <svg class="w-2.5 h-2.5 ms-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
-                  viewBox="0 0 10 6">
-                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                    d="m1 1 4 4 4-4" />
-                </svg></button>
-              <!-- Dropdown menu -->
-              <div id="dropdownNavbar1"
-                class="z-10 hidden font-normal bg-white divide-y divide-gray-100 rounded-lg shadow w-64 dark:bg-gray-700 dark:divide-gray-600">
-                <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownLargeButton">
-                  <li>
-                    <a href="/dashboard"
-                      class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
-                      My Account</a>
-                  </li>
-                  <li>
-                    <a href="/logout"
-                      class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
-                      Logout</a>
-                  </li>
-                </ul>
-              </div>
-            </li>
           </ul>
         </div>
       </div>
     </nav>
   </header>
   <hr />
-  {% if details|length == 0 %}
-  <style>
-    #crop-rec {
-      min-height: 82vh;
-    }
-  </style>
-  {% endif %}
-  <form id="crop-rec" method="POST" action="/crop-recommendation-system" class="text-gray-600 body-font relative">
+  <form method="POST" action="/login" class="min-h-[82vh] text-gray-600 body-font relative">
     <div class="container px-5 py-10 mx-auto">
       <div class="flex flex-col text-center w-full mb-12">
         <h1 class="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900">
-          Crop Recommendation System
+          Log In to FarmGenie
         </h1>
         <p class="lg:w-2/3 mx-auto leading-relaxed text-base">
           AI-based platform for optimized crop selection and cultivation
           practices.
+        </p>
+        <p class="lg:w-2/3 mx-auto leading-relaxed text-base" style="color: #F61C0D;">
+          {{ alert[0] }}
         </p>
       </div>
       <div class="lg:w-1/2 md:w-2/3 mx-auto">
         <div class="flex flex-wrap -m-2">
           <div class="p-2 w-full">
             <div class="relative">
-              <label for="zipcode" class="leading-7 text-sm text-gray-600" id="label_for_zipcode">Zipcode (Enter your
-                zip code and press ENTER) </label>
-              <input type="number" id="zipcode" name="zipcode"
-                class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-yellow-500 focus:bg-white focus:ring-2 focus:ring-yellow-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
-                required />
+              <label for="email" class="leading-7 text-sm text-gray-600">E-mail Address</label>
+              <input type="email" id="email" name="email"
+                class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-yellow-500 focus:bg-white focus:ring-2 focus:ring-yellow-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" required/>
             </div>
           </div>
-          <div class="p-2 w-1/2">
+          <div class="p-2 w-full">
             <div class="relative">
-              <label for="nRatio" class="leading-7 text-sm text-gray-600">Nitrogen Ratio (kg/ha)</label>
-              <input type="number" id="nRatio" name="nRatio"
-                class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-yellow-500 focus:bg-white focus:ring-2 focus:ring-yellow-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
-                required />
-            </div>
-          </div>
-          <div class="p-2 w-1/2">
-            <div class="relative">
-              <label for="pRatio" class="leading-7 text-sm text-gray-600">Phosphorous Ratio (kg/ha)</label>
-              <input type="number" id="pRatio" name="pRatio"
-                class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-yellow-500 focus:bg-white focus:ring-2 focus:ring-yellow-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
-                required />
-            </div>
-          </div>
-          <div class="p-2 w-1/2">
-            <div class="relative">
-              <label for="kRatio" class="leading-7 text-sm text-gray-600">Potassium Ratio (kg/ha)</label>
-              <input type="number" id="kRatio" name="kRatio"
-                class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-yellow-500 focus:bg-white focus:ring-2 focus:ring-yellow-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
-                required />
-            </div>
-          </div>
-          <div class="p-2 w-1/2" hidden>
-            <div class="relative">
-              <label for="temp" class="leading-7 text-sm text-gray-600">Temperature (°C)</label>
-              <input type="number" id="temp" name="temp"
-                class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-yellow-500 focus:bg-white focus:ring-2 focus:ring-yellow-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
-            </div>
-          </div>
-          <div class="p-2 w-1/2" hidden>
-            <div class="relative">
-              <label for="humidity" class="leading-7 text-sm text-gray-600">Humidity (%)</label>
-              <input type="number" id="humidity" name="humidity"
-                class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-yellow-500 focus:bg-white focus:ring-2 focus:ring-yellow-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
-            </div>
-          </div>
-          <div class="p-2 w-1/2">
-            <div class="relative">
-              <label for="pH" class="leading-7 text-sm text-gray-600">Soil pH Value</label>
-              <input type="number" id="pH" name="pH"
-                class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-yellow-500 focus:bg-white focus:ring-2 focus:ring-yellow-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
-            </div>
-          </div>
-          <div class="p-2 w-full" hidden>
-            <div class="relative">
-              <label for="rainfall" class="leading-7 text-sm text-gray-600">Rainfall (mm)</label>
-              <input type="number" id="rainfall" name="rainfall"
-                class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-yellow-500 focus:bg-white focus:ring-2 focus:ring-yellow-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
+              <label for="password" class="leading-7 text-sm text-gray-600">Password</label>
+              <input type="password" id="password" name="password"
+                class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-yellow-500 focus:bg-white focus:ring-2 focus:ring-yellow-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" required/>
             </div>
           </div>
           <div class="p-2 w-full">
             <button type="submit"
               class="flex mx-auto text-white bg-yellow-500 border-0 py-2 px-8 focus:outline-none hover:bg-yellow-600 rounded text-lg">
-              Submit
+              Login
             </button>
           </div>
           <div class="p-2 w-full pt-8 mt-8 border-t border-gray-200 text-center">
-            <a class="text-yellow-500">Crop Recommendation System</a>
             <p class="font-semibold leading-normal my-5">
               FarmGenie <br />
               Cultivating Success
@@ -251,116 +166,6 @@
       </div>
     </div>
   </form>
-  <hr />
-  {% if details|length != 0 %}
-  <section class="text-gray-600 body-font">
-    <div class="container px-5 py-8 mx-auto">
-      <section class="bg-gray-50 py-8 antialiased dark:bg-gray-900 md:py-16">
-        <div class="mx-auto max-w-screen-xl px-4 2xl:px-0">
-          <div class="text-center mb-10">
-            <h1 class="sm:text-3xl text-2xl font-medium text-center title-font text-gray-900 mb-4">
-              Recommended Crop:
-              <span class="text-yellow-500">‟{{ details[0] }}”</span>
-            </h1>
-            <p class="text-base leading-relaxed xl:w-2/4 lg:w-3/4 mx-auto">
-              Given below are the suitable conditions for the proper growth of
-              <span class="font-semibold">‟{{ details[0] }}”</span> in order to
-              get the maximum output and productivity.
-            </p>
-          </div>
-          <div class="flex flex-wrap justify-center gap-4">
-            <div
-              class="flex items-center justify-center rounded-lg border border-gray-200 bg-white px-4 py-2 hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
-              <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"
-                class="text-yellow-500 w-6 h-6 flex-shrink-0 mr-4" viewBox="0 0 24 24">
-                <path d="M22 11.08V12a10 10 0 11-5.93-9.14"></path>
-                <path d="M22 4L12 14.01l-3-3"></path>
-              </svg>
-              <span class="text-base font-medium text-gray-900 dark:text-white">
-                <span class="title-font font-semibold">Nitrogen Ratio:&nbsp;</span>
-                {{ details[1]|min|round }}kg/ha - {{ details[1]|max|round }}kg/ha
-              </span>
-            </div>
-            <div
-              class="flex items-center justify-center rounded-lg border border-gray-200 bg-white px-4 py-2 hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
-              <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"
-                class="text-yellow-500 w-6 h-6 flex-shrink-0 mr-4" viewBox="0 0 24 24">
-                <path d="M22 11.08V12a10 10 0 11-5.93-9.14"></path>
-                <path d="M22 4L12 14.01l-3-3"></path>
-              </svg>
-              <span class="text-base font-medium text-gray-900 dark:text-white">
-                <span class="title-font font-semibold">Phosphorous Ratio:&nbsp;</span>
-                {{ details[2]|min|round }}kg/ha - {{ details[2]|max|round }}kg/ha
-              </span>
-            </div>
-            <div
-              class="flex items-center justify-center rounded-lg border border-gray-200 bg-white px-4 py-2 hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
-              <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"
-                class="text-yellow-500 w-6 h-6 flex-shrink-0 mr-4" viewBox="0 0 24 24">
-                <path d="M22 11.08V12a10 10 0 11-5.93-9.14"></path>
-                <path d="M22 4L12 14.01l-3-3"></path>
-              </svg>
-              <span class="text-base font-medium text-gray-900 dark:text-white">
-                <span class="title-font font-semibold">Potassium Ratio:&nbsp;</span>
-                {{ details[3]|min|round }}kg/ha - {{ details[3]|max|round }}kg/ha
-              </span>
-            </div>
-            <div
-              class="flex items-center justify-center rounded-lg border border-gray-200 bg-white px-4 py-2 hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
-              <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"
-                class="text-yellow-500 w-6 h-6 flex-shrink-0 mr-4" viewBox="0 0 24 24">
-                <path d="M22 11.08V12a10 10 0 11-5.93-9.14"></path>
-                <path d="M22 4L12 14.01l-3-3"></path>
-              </svg>
-              <span class="text-base font-medium text-gray-900 dark:text-white">
-                <span class="title-font font-semibold">Temperature:&nbsp;</span>
-                {{ details[4]|min|round }}°C - {{ details[4]|max|round }}°C
-              </span>
-            </div>
-            <div
-              class="flex items-center justify-center rounded-lg border border-gray-200 bg-white px-4 py-2 hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
-              <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"
-                class="text-yellow-500 w-6 h-6 flex-shrink-0 mr-4" viewBox="0 0 24 24">
-                <path d="M22 11.08V12a10 10 0 11-5.93-9.14"></path>
-                <path d="M22 4L12 14.01l-3-3"></path>
-              </svg>
-              <span class="text-base font-medium text-gray-900 dark:text-white">
-                <span class="title-font font-semibold">Relative Humidity:&nbsp;</span>
-                {{ details[5]|min|round }}% - {{ details[5]|max|round }}%
-              </span>
-            </div>
-            <div
-              class="flex items-center justify-center rounded-lg border border-gray-200 bg-white px-4 py-2 hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
-              <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"
-                class="text-yellow-500 w-6 h-6 flex-shrink-0 mr-4" viewBox="0 0 24 24">
-                <path d="M22 11.08V12a10 10 0 11-5.93-9.14"></path>
-                <path d="M22 4L12 14.01l-3-3"></path>
-              </svg>
-              <span class="text-base font-medium text-gray-900 dark:text-white">
-                <span class="title-font font-semibold">pH Scale:&nbsp;</span>
-                {{ details[6]|min|round }} - {{ details[6]|max|round }}
-              </span>
-            </div>
-            <div
-              class="flex items-center justify-center rounded-lg border border-gray-200 bg-white px-4 py-2 hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
-              <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"
-                class="text-yellow-500 w-6 h-6 flex-shrink-0 mr-4" viewBox="0 0 24 24">
-                <path d="M22 11.08V12a10 10 0 11-5.93-9.14"></path>
-                <path d="M22 4L12 14.01l-3-3"></path>
-              </svg>
-              <span class="text-base font-medium text-gray-900 dark:text-white">
-                <span class="title-font font-semibold">Rainfall:&nbsp;</span>
-                {{ details[7]|min|round }}mm - {{ details[7]|max|round }}mm
-              </span>
-            </div>
-          </div>
-
-        </div>
-      </section>
-    </div>
-  </section>
-  {% endif %}
-  <hr />
   <footer class="text-gray-600 body-font">
     <div class="container px-5 py-8 mx-auto flex items-center sm:flex-row flex-col">
       <a href="/" class="flex title-font font-medium items-center md:justify-start justify-center text-gray-900">
@@ -476,7 +281,6 @@
     }
   </script>
   <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-  <script src="{{url_for('static', filename='dist/js/script.js')}}"></script>
 </body>
 
 </html>

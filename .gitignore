@@ -4,12 +4,9 @@ package-lock.json
 package.json
 tailwind.config.js
 Test
-new.py
-disease_prediction.html
 /index.html
-.vercel
-vercel.json
 config.py
 __pycache__
 Notebook.ipynb
 details.md
+details.csv

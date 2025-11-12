@@ -1381,6 +1381,38 @@ input:checked + .toggle-bg {
   height: 100%;
 }
 
+.min-h-screen {
+  min-height: 100vh;
+}
+
+.min-h-96 {
+  min-height: 24rem;
+}
+
+.min-h-\[10rem\] {
+  min-height: 10rem;
+}
+
+.min-h-\[5rem\] {
+  min-height: 5rem;
+}
+
+.min-h-\[78vh\] {
+  min-height: 78vh;
+}
+
+.min-h-\[80vh\] {
+  min-height: 80vh;
+}
+
+.min-h-\[83vh\] {
+  min-height: 83vh;
+}
+
+.min-h-\[82vh\] {
+  min-height: 82vh;
+}
+
 .w-1 {
   width: 0.25rem;
 }

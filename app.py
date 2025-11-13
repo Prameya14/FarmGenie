@@ -514,7 +514,10 @@ def login():
 @app.route("/crop-recommendation-system", methods=["POST", "GET"])
 def desiredCrop():
     access_token = request.cookies.get('access_token')
-    data = jwt.decode(access_token, SECRET_KEY, algorithms=["HS256"])
+    if (access_token == None):
+        data = None
+    else:
+        data = jwt.decode(access_token, SECRET_KEY, algorithms=["HS256"])
     if request.method == "POST":
         params = request.form
         N = float(params["nRatio"])
@@ -606,7 +609,10 @@ def generate_frames():
 @app.route("/crop-disease-prediction-system", methods=["GET", "POST"])
 def disease_prediction():
     access_token = request.cookies.get('access_token')
-    data = jwt.decode(access_token, SECRET_KEY, algorithms=["HS256"])
+    if (access_token == None):
+        data = None
+    else:
+        data = jwt.decode(access_token, SECRET_KEY, algorithms=["HS256"])
     if request.method == "POST":
         i = capture_image()
         i2 = cv2_to_pillow(i)
@@ -649,7 +655,10 @@ def disease_prediction():
 @app.route("/crop-disease-prediction-system-2", methods=["GET", "POST"])
 def disease_prediction_2():
     access_token = request.cookies.get('access_token')
-    data = jwt.decode(access_token, SECRET_KEY, algorithms=["HS256"])
+    if (access_token == None):
+        data = None
+    else:
+        data = jwt.decode(access_token, SECRET_KEY, algorithms=["HS256"])
     if request.method == "POST":
         image = request.files["image"]
         img = Image.open(image).convert("RGB").resize((256, 256))
